@@ -1,0 +1,20 @@
+name: step2-cloud-test
+
+on:
+  workflow_dispatch:   # run manually from the Actions tab
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - run: python step2_test.py --only T1,T3,T4 --out step2_cloud_results.xlsx
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: step2-cloud-results
+          path: step2_cloud_results.xlsx
