@@ -287,11 +287,11 @@ def isin_links(px):
     return {i: final(i) for i in step}
 
 
-def _snap(f):
-    """Snap a factor to a clean ratio (2, 10, 1.5, 4/3 ...) if within 1%."""
+def _snap(f, tol=0.01, max_den=10):
+    """Snap a factor to a clean ratio (2, 10, 1.5, 4/3 ...) if within tol."""
     from fractions import Fraction
-    fr = Fraction(f).limit_denominator(10)
-    return float(fr) if abs(float(fr) / f - 1) < 0.01 else round(f, 4)
+    fr = Fraction(f).limit_denominator(max_den)
+    return float(fr) if abs(float(fr) / f - 1) < tol else round(f, 4)
 
 
 def yf_closes(symbols, start):
@@ -337,62 +337,96 @@ def yf_closes(symbols, start):
 
 
 def detect_actions():
-    """G1: ratio = NSE raw close / yfinance adjusted close. A lasting step in the ratio = split/bonus.
-    factor = median ratio (5 days before) / median ratio (5 days after). Applied only if NSE's own
-    overnight move, once adjusted, is between -20% and +20%. Safety net: raw overnight moves beyond
-    +/-35% that no applied factor explains go to 'review'. Universe stocks only."""
+    """G1 + H1-H4. Universe stocks only.
+    G1  ratio = NSE raw close / yfinance adjusted close; a lasting step = split/bonus,
+        factor = median ratio 5 days before / 5 days after (snapped to clean ratios).
+    H1  ignore a yfinance step if applying it would make NSE's own open gap bigger (yfinance glitch).
+    H2  confirm a split with the ex-date OPEN: adjusted open within +/-20% of last close.
+    H3  NSE open gaps down >= 25% with no yfinance step = structural event (demerger, or split/bonus
+        missing in yfinance): factor = last close / ex-date open (snapped if close to a clean ratio).
+    H4  NEWLIST stocks: history starts on the NSE listing date.
+    Other close-to-close moves beyond +/-35% are recorded as 'noted' (genuine moves, no adjustment)."""
     if not MASTER.exists():
         print("No universe file - skipping corporate actions")
         return pd.DataFrame()
     m = pd.read_csv(MASTER)
-    m = m[m["status"] == "active"][["isin", "symbol"]]
-    px = load_prices(["date", "isin", "symbol", "series", "close"])
+    m = m[m["status"] == "active"]
+    px = load_prices(["date", "isin", "symbol", "series", "open", "close"])
     link = isin_links(px)
     px["isin"] = px["isin"].map(lambda i: link.get(i, i))   # pre-split history joins the current ISIN
     px = px[px["isin"].isin(m["isin"])]
     px = px.sort_values(["isin", "date", "series"]).drop_duplicates(["isin", "date"], keep="first")
+
+    # H4: NEWLIST history starts at NSE listing date
+    starts = {}
+    if "listing_date" in m:
+        nl = m[(m["tag"] == "NEWLIST") & m["listing_date"].notna()]
+        starts = dict(zip(nl["isin"], pd.to_datetime(nl["listing_date"])))
+        pd.DataFrame({"isin": list(starts), "history_start": [d.date() for d in starts.values()]}) \
+            .to_csv(META / "history_start.csv", index=False)
+    if starts:
+        px = px[[d >= starts.get(i, pd.Timestamp.min) for i, d in zip(px["isin"], px["date"])]]
+
     yfc, missing = yf_closes(m["symbol"], start=str(DEFAULT_START - timedelta(days=10)))
     print(f"yfinance prices for {len(yfc)}/{len(m)} stocks; missing {len(missing)}")
 
     events = []
+
+    def add(**kw):
+        events.append(kw)
+
     for isin, sym in zip(m["isin"], m["symbol"]):
-        g = px[px["isin"] == isin].set_index("date")["close"]
+        g = px[px["isin"] == isin].set_index("date")
         if len(g) < 3:
             continue
-        raw_ret = g / g.shift(1)
-        applied_dates = set()
+        close, opn = g["close"], g["open"]
+        last = close.shift(1)
+        gap_open = opn / last            # NSE's own overnight gap at the open
+        handled = set()
         if sym in yfc:
-            j = pd.concat([g.rename("raw"), yfc[sym].rename("yf")], axis=1, join="inner").dropna()
+            j = pd.concat([close.rename("raw"), yfc[sym].rename("yf")], axis=1, join="inner").dropna()
             j = j[j["yf"] > 0]
             ratio = j["raw"] / j["yf"]
             step = ratio.shift(1) / ratio
             for d in step[(step - 1).abs() > 0.08].index:
                 pos = ratio.index.get_loc(d)
-                before = ratio.iloc[max(0, pos - 5):pos].median()
-                after = ratio.iloc[pos:pos + 5].median()
-                f = before / after
+                f = ratio.iloc[max(0, pos - 5):pos].median() / ratio.iloc[pos:pos + 5].median()
                 if abs(f - 1) < 0.08:
-                    continue  # one-day glitch, not a lasting step
+                    continue  # one-day blip, not a lasting step
                 f = _snap(f)
-                prev_d = ratio.index[pos - 1]
-                adj_move = (j.at[d, "raw"] * f) / j.at[prev_d, "raw"] - 1
-                ok = -0.20 < adj_move < 0.20
-                events.append({"isin": isin, "symbol": sym, "ex_date": d, "last_date": prev_d,
-                               "last_close": j.at[prev_d, "raw"], "ex_close": j.at[d, "raw"],
-                               "factor": f, "adj_move_pct": round(adj_move * 100, 1),
-                               "status": "applied" if ok else "review",
-                               "note": "" if ok else "adjusted move still beyond +/-20% - check"})
-                if ok:
-                    applied_dates.add(d)
-        # safety net: big unexplained raw moves
-        for d, r in raw_ret[(raw_ret - 1).abs() > 0.35].items():
-            if d in applied_dates:
+                prev_d = close.index[close.index.get_loc(d) - 1]
+                go = gap_open.get(d)
+                base = dict(isin=isin, symbol=sym, ex_date=d, last_date=prev_d, last_close=close[prev_d],
+                            ex_open=opn.get(d), ex_close=close.get(d), factor=f, source="yfinance step")
+                # H1: a real event's factor makes NSE's own open gap SMALLER; a glitch makes it bigger
+                if go is not None and not pd.isna(go) and abs(go * f - 1) >= abs(go - 1):
+                    add(**base, adj_move_pct=round((go * f - 1) * 100, 1), status="ignored",
+                        event_type="yfinance glitch", note="adjusting would make NSE's own gap worse")
+                    continue
+                adj_open = opn[d] * f / close[prev_d] - 1                         # H2
+                ok = -0.20 < adj_open < 0.20
+                add(**base, adj_move_pct=round(adj_open * 100, 1), status="applied" if ok else "review",
+                    event_type="split/bonus", note="" if ok else "adjusted open still beyond +/-20%")
+                handled.add(d)
+        # H3: big gap at the open with no yfinance step
+        for d, go in gap_open[gap_open <= 0.75].items():   # down-gaps only: demergers/splits never gap up
+            if d in handled or pd.isna(go):
                 continue
-            events.append({"isin": isin, "symbol": sym, "ex_date": d, "last_date": None,
-                           "last_close": None, "ex_close": g.get(d), "factor": None,
-                           "adj_move_pct": round((r - 1) * 100, 1), "status": "review",
-                           "note": "big move with no split/bonus found" +
-                                   (" (no yfinance data)" if sym not in yfc else "")})
+            prev_d = close.index[close.index.get_loc(d) - 1]
+            f = _snap(close[prev_d] / opn[d], tol=0.02, max_den=2)
+            add(isin=isin, symbol=sym, ex_date=d, last_date=prev_d, last_close=close[prev_d],
+                ex_open=opn[d], ex_close=close[d], factor=f, source="NSE open gap",
+                adj_move_pct=round((close[d] * f / close[prev_d] - 1) * 100, 1), status="applied",
+                event_type="structural (demerger / split missing in yfinance)",
+                note="check: set manual_ignore if this was a genuine crash")
+            handled.add(d)
+        # remaining big close-to-close moves: genuine, recorded only
+        for d, r in (close / last)[((close / last) - 1).abs() > 0.35].items():
+            if d in handled:
+                continue
+            add(isin=isin, symbol=sym, ex_date=d, last_date=None, last_close=last.get(d), ex_open=opn.get(d),
+                ex_close=close[d], factor=None, source="price move", adj_move_pct=round((r - 1) * 100, 1),
+                status="noted", event_type="genuine move", note="opened within 25% - no adjustment")
     ev = pd.DataFrame(events)
     if not ev.empty:
         ev = ev.drop_duplicates(["isin", "ex_date", "status"]).sort_values(["ex_date", "symbol"])
@@ -400,12 +434,12 @@ def detect_actions():
     # keep any manual decisions (status manual_apply / manual_ignore) from earlier runs
     if ACTIONS.exists():
         old = pd.read_csv(ACTIONS, parse_dates=["ex_date"])
-        if "adj_move_pct" in old:  # only files from this method
+        if "event_type" in old:  # only files from this method
             man = old[old["status"].astype(str).str.startswith("manual")]
             if len(man):
                 key = set(zip(man["isin"], man["ex_date"]))
                 ev = pd.concat([ev[[(i, d) not in key for i, d in zip(ev["isin"], ev["ex_date"])]], man])
-    ev["method"] = "yf_ratio_v2"
+    ev["method"] = "v3_H1-H4"
     ACTIONS.parent.mkdir(parents=True, exist_ok=True)
     ev.to_csv(ACTIONS, index=False)
     pd.DataFrame({"symbol_without_yfinance_data": missing}).to_csv(META / "yfinance_missing.csv", index=False)
