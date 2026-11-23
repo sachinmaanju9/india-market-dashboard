@@ -1,0 +1,833 @@
+symbol,fetched,error,yf_sector,basic_industry,class_source
+360ONE,2026-11-23,,Financial Services,Asset Management,yfinance
+ABB,2026-11-23,,Industrials,Specialty Industrial Machinery,yfinance
+ACC,2026-11-23,,Basic Materials,Building Materials,yfinance
+ACMESOLAR,2026-11-23,,Utilities,Utilities - Renewable,yfinance
+AIAENG,2026-11-23,,Industrials,Specialty Industrial Machinery,yfinance
+APLAPOLLO,2026-11-23,,Basic Materials,Steel,yfinance
+AUBANK,2026-11-23,,Financial Services,Banks - Regional,yfinance
+AWL,2026-11-23,,Consumer Defensive,Packaged Foods,yfinance
+AADHARHFC,2026-11-23,,Financial Services,Mortgage Finance,yfinance
+AARTIIND,2026-11-23,,Basic Materials,Specialty Chemicals,yfinance
+AAVAS,2026-11-23,,Financial Services,Mortgage Finance,yfinance
+ABBOTINDIA,2026-11-23,,Healthcare,Drug Manufacturers - Specialty & Generic,yfinance
+ACE,2026-11-23,,Industrials,Farm & Heavy Construction Machinery,yfinance
+ACUTAAS,2026-11-23,,Basic Materials,Specialty Chemicals,yfinance
+ADANIENSOL,2026-11-23,,Utilities,Utilities - Independent Power Producers,yfinance
+ADANIENT,2026-11-23,,Energy,Thermal Coal,yfinance
+ADANIGREEN,2026-11-23,,Utilities,Utilities - Renewable,yfinance
+ADANIPORTS,2026-11-23,,Industrials,Marine Shipping,yfinance
+ADANIPOWER,2026-11-23,,Utilities,Utilities - Independent Power Producers,yfinance
+ATGL,2026-11-23,,Utilities,Utilities - Regulated Gas,yfinance
+ABCAPITAL,2026-11-23,,Financial Services,Financial Conglomerates,yfinance
+ABREL,2026-11-23,,Real Estate,Real Estate Services,yfinance
+ABSLAMC,2026-11-23,,Financial Services,Asset Management,yfinance
+CPPLUS,2026-11-23,,Industrials,Building Products & Equipment,yfinance
+AEGISLOG,2026-11-23,,Energy,Oil & Gas Refining & Marketing,yfinance
+AEGISVOPAK,2026-11-23,,Energy,Oil & Gas Equipment & Services,yfinance
+AETHER,2026-11-23,,Basic Materials,Specialty Chemicals,yfinance
+AFCONS,2026-11-23,,Industrials,Engineering & Construction,yfinance
+AFFLE,2026-11-23,,Communication Services,Advertising Agencies,yfinance
+AJANTPHARM,2026-11-23,,Healthcare,Drug Manufacturers - Specialty & Generic,yfinance
+ALKEM,2026-11-23,,Healthcare,Drug Manufacturers - Specialty & Generic,yfinance
+ABDL,2026-11-23,,Consumer Defensive,Beverages - Wineries & Distilleries,yfinance
+ARE&M,2026-11-23,,Industrials,Electrical Equipment & Parts,yfinance
+AMBER,2026-11-23,,Consumer Cyclical,"Furnishings, Fixtures & Appliances",yfinance
+AMBUJACEM,2026-11-23,,Basic Materials,Building Materials,yfinance
+ANANDRATHI,2026-11-23,,Financial Services,Asset Management,yfinance
+ANANTRAJ,2026-11-23,,Real Estate,Real Estate - Development,yfinance
+ANGELONE,2026-11-23,,Financial Services,Capital Markets,yfinance
+ANTHEM,2026-11-23,,Healthcare,Biotechnology,yfinance
+ANURAS,2026-11-23,,Basic Materials,Specialty Chemicals,yfinance
+APARINDS,2026-11-23,,Industrials,Electrical Equipment & Parts,yfinance
+APOLLOHOSP,2026-11-23,,Healthcare,Medical Care Facilities,yfinance
+APOLLOTYRE,2026-11-23,,Consumer Cyclical,Auto Parts,yfinance
+APTUS,2026-11-23,,Financial Services,Mortgage Finance,yfinance
+ASAHIINDIA,2026-11-23,,Consumer Cyclical,Auto Parts,yfinance
+ASHOKLEY,2026-11-23,,Industrials,Farm & Heavy Construction Machinery,yfinance
+ASIANPAINT,2026-11-23,,Basic Materials,Specialty Chemicals,yfinance
+ASTERDM,2026-11-23,,Healthcare,Medical Care Facilities,yfinance
+ASTRAL,2026-11-23,,Industrials,Building Products & Equipment,yfinance
+ATHERENERG,2026-11-23,,Consumer Cyclical,Auto Manufacturers,yfinance
+ATUL,2026-11-23,,Basic Materials,Specialty Chemicals,yfinance
+AUROPHARMA,2026-11-23,,Healthcare,Drug Manufacturers - Specialty & Generic,yfinance
+AIIL,2026-11-23,,Financial Services,Capital Markets,yfinance
+AVANTIFEED,2026-11-23,,Consumer Defensive,Packaged Foods,yfinance
+DMART,2026-11-23,,Consumer Defensive,Discount Stores,yfinance
+AXISBANK,2026-11-23,,Financial Services,Banks - Regional,yfinance
+AZAD,2026-11-23,,Industrials,Specialty Industrial Machinery,yfinance
+BEML,2026-11-23,,Industrials,Conglomerates,yfinance
+BLS,2026-11-23,,Industrials,Specialty Business Services,yfinance
+BSE,2026-11-23,,Financial Services,Financial Data & Stock Exchanges,yfinance
+BAJAJ-AUTO,2026-11-23,,Consumer Cyclical,Auto Manufacturers,yfinance
+BAJFINANCE,2026-11-23,,Financial Services,Credit Services,yfinance
+BAJAJFINSV,2026-11-23,,Financial Services,Financial Conglomerates,yfinance
+BAJAJHLDNG,2026-11-23,,Financial Services,Asset Management,yfinance
+BAJAJHFL,2026-11-23,,Financial Services,Mortgage Finance,yfinance
+BALKRISIND,2026-11-23,,Consumer Cyclical,Auto Parts,yfinance
+BALRAMCHIN,2026-11-23,,Consumer Defensive,Confectioners,yfinance
+BANDHANBNK,2026-11-23,,Financial Services,Banks - Regional,yfinance
+BANKBARODA,2026-11-23,,Financial Services,Banks - Regional,yfinance
+BANKINDIA,2026-11-23,,Financial Services,Banks - Regional,yfinance
+MAHABANK,2026-11-23,,Financial Services,Banks - Regional,yfinance
+BATAINDIA,2026-11-23,,Consumer Cyclical,Footwear & Accessories,yfinance
+BELRISE,2026-11-23,,Consumer Cyclical,Auto Parts,yfinance
+BERGEPAINT,2026-11-23,,Basic Materials,Specialty Chemicals,yfinance
+BHARATCOAL,2026-11-23,,Basic Materials,Coking Coal,yfinance
+BDL,2026-11-23,,Industrials,Aerospace & Defense,yfinance
+BEL,2026-11-23,,Industrials,Aerospace & Defense,yfinance
+BHARATFORG,2026-11-23,,Industrials,Metal Fabrication,yfinance
+BHEL,2026-11-23,,Industrials,Specialty Industrial Machinery,yfinance
+BPCL,2026-11-23,,Energy,Oil & Gas Refining & Marketing,yfinance
+BHARTIARTL,2026-11-23,,Communication Services,Telecom Services,yfinance
+BHARTIHEXA,2026-11-23,,Communication Services,Telecom Services,yfinance
+GROWW,2026-11-23,,Financial Services,Capital Markets,yfinance
+BIOCON,2026-11-23,,Healthcare,Biotechnology,yfinance
+BSOFT,2026-11-23,,Technology,Information Technology Services,yfinance
+BBOX,2026-11-23,,Technology,Software - Application,yfinance
+BLUESTARCO,2026-11-23,,Industrials,Building Products & Equipment,yfinance
+BOSCHLTD,2026-11-23,,Consumer Cyclical,Auto Parts,yfinance
+FIRSTCRY,2026-11-23,,Consumer Cyclical,Internet Retail,yfinance
+BRIGADE,2026-11-23,,Real Estate,Real Estate - Development,yfinance
+BRITANNIA,2026-11-23,,Consumer Defensive,Packaged Foods,yfinance
+CCL,2026-11-23,,Consumer Defensive,Packaged Foods,yfinance
+CESC,2026-11-23,,Utilities,Utilities - Regulated Electric,yfinance
+CGPOWER,2026-11-23,,Industrials,Electrical Equipment & Parts,yfinance
+CIEINDIA,2026-11-23,,Consumer Cyclical,Auto Parts,yfinance
+CRISIL,2026-11-23,,Financial Services,Financial Data & Stock Exchanges,yfinance
+CANFINHOME,2026-11-23,,Financial Services,Mortgage Finance,yfinance
+CANBK,2026-11-23,,Financial Services,Banks - Regional,yfinance
+CANHLIFE,2026-11-23,,Financial Services,Insurance - Life,yfinance
+CAPLIPOINT,2026-11-23,,Healthcare,Drug Manufacturers - Specialty & Generic,yfinance
+CGCL,2026-11-23,,Financial Services,Credit Services,yfinance
+CARBORUNIV,2026-11-23,,Industrials,Tools & Accessories,yfinance
+CARTRADE,2026-11-23,,Consumer Cyclical,Auto & Truck Dealerships,yfinance
+CASTROLIND,2026-11-23,,Energy,Oil & Gas Refining & Marketing,yfinance
+CEATLTD,2026-11-23,,Consumer Cyclical,Auto Parts,yfinance
+CEMPRO,2026-11-23,,Industrials,Engineering & Construction,yfinance
+CENTRALBK,2026-11-23,,Financial Services,Banks - Regional,yfinance
+CDSL,2026-11-23,,Financial Services,Capital Markets,yfinance
+CMPDI,2026-11-23,,Basic Materials,Other Industrial Metals & Mining,yfinance
+CHAMBLFERT,2026-11-23,,Basic Materials,Agricultural Inputs,yfinance
+CHENNPETRO,2026-11-23,,Energy,Oil & Gas Refining & Marketing,yfinance
+CHOICEIN,2026-11-23,,Financial Services,Capital Markets,yfinance
+CHOLAHLDNG,2026-11-23,,Financial Services,Credit Services,yfinance
+CHOLAFIN,2026-11-23,,Financial Services,Credit Services,yfinance
+CIPLA,2026-11-23,,Healthcare,Drug Manufacturers - Specialty & Generic,yfinance
+CUB,2026-11-23,,Financial Services,Banks - Regional,yfinance
+CLEANMAX,2026-11-23,,Utilities,Utilities - Renewable,yfinance
+CLEAN,2026-11-23,,Basic Materials,Specialty Chemicals,yfinance
+COALINDIA,2026-11-23,,Energy,Thermal Coal,yfinance
+COCHINSHIP,2026-11-23,,Industrials,Aerospace & Defense,yfinance
+COFORGE,2026-11-23,,Technology,Information Technology Services,yfinance
+COHANCE,2026-11-23,,Healthcare,Drug Manufacturers - Specialty & Generic,yfinance
+COLPAL,2026-11-23,,Consumer Defensive,Household & Personal Products,yfinance
+CAMS,2026-11-23,,Technology,Information Technology Services,yfinance
+CONCORDBIO,2026-11-23,,Healthcare,Biotechnology,yfinance
+CONCOR,2026-11-23,,Industrials,Railroads,yfinance
+COROMANDEL,2026-11-23,,Basic Materials,Agricultural Inputs,yfinance
+CRAFTSMAN,2026-11-23,,Consumer Cyclical,Auto Parts,yfinance
+CREDITACC,2026-11-23,,Financial Services,Credit Services,yfinance
+CROMPTON,2026-11-23,,Consumer Cyclical,"Furnishings, Fixtures & Appliances",yfinance
+CUMMINSIND,2026-11-23,,Industrials,Specialty Industrial Machinery,yfinance
+CUPID,2026-11-23,,Consumer Defensive,Household & Personal Products,yfinance
+CYIENT,2026-11-23,,Industrials,Conglomerates,yfinance
+DLF,2026-11-23,,Real Estate,Real Estate - Development,yfinance
+DOMS,2026-11-23,,Industrials,Business Equipment & Supplies,yfinance
+DABUR,2026-11-23,,Consumer Defensive,Household & Personal Products,yfinance
+DALBHARAT,2026-11-23,,Basic Materials,Building Materials,yfinance
+DATAPATTNS,2026-11-23,,Industrials,Aerospace & Defense,yfinance
+DEEPAKFERT,2026-11-23,,Basic Materials,Chemicals,yfinance
+DEEPAKNTR,2026-11-23,,Basic Materials,Chemicals,yfinance
+DELHIVERY,2026-11-23,,Industrials,Integrated Freight & Logistics,yfinance
+DEVYANI,2026-11-23,,Consumer Cyclical,Restaurants,yfinance
+DIVISLAB,2026-11-23,,Healthcare,Drug Manufacturers - Specialty & Generic,yfinance
+DIXON,2026-11-23,,Technology,Consumer Electronics,yfinance
+LALPATHLAB,2026-11-23,,Healthcare,Diagnostics & Research,yfinance
+DRREDDY,2026-11-23,,Healthcare,Drug Manufacturers - Specialty & Generic,yfinance
+EIDPARRY,2026-11-23,,Basic Materials,Agricultural Inputs,yfinance
+EIHOTEL,2026-11-23,,Consumer Cyclical,Lodging,yfinance
+EICHERMOT,2026-11-23,,Consumer Cyclical,Auto Manufacturers,yfinance
+ELECON,2026-11-23,,Industrials,Specialty Industrial Machinery,yfinance
+ELGIEQUIP,2026-11-23,,Industrials,Specialty Industrial Machinery,yfinance
+EMAMILTD,2026-11-23,,Consumer Defensive,Household & Personal Products,yfinance
+EMCURE,2026-11-23,,Healthcare,Drug Manufacturers - Specialty & Generic,yfinance
+EMMVEE,2026-11-23,,Technology,Solar,yfinance
+ENDURANCE,2026-11-23,,Consumer Cyclical,Auto Parts,yfinance
+ENGINERSIN,2026-11-23,,Industrials,Engineering & Construction,yfinance
+ESCORTS,2026-11-23,,Industrials,Farm & Heavy Construction Machinery,yfinance
+ETERNAL,2026-11-23,,Consumer Cyclical,Internet Retail,yfinance
+EXIDEIND,2026-11-23,,Consumer Cyclical,Auto Parts,yfinance
+NYKAA,2026-11-23,,Consumer Cyclical,Internet Retail,yfinance
+FEDERALBNK,2026-11-23,,Financial Services,Banks - Regional,yfinance
+FACT,2026-11-23,,Basic Materials,Agricultural Inputs,yfinance
+FINCABLES,2026-11-23,,Industrials,Electrical Equipment & Parts,yfinance
+FSL,2026-11-23,,Technology,Information Technology Services,yfinance
+FIVESTAR,2026-11-23,,Financial Services,Credit Services,yfinance
+FORCEMOT,2026-11-23,,Consumer Cyclical,Auto Manufacturers,yfinance
+FORTIS,2026-11-23,,Healthcare,Medical Care Facilities,yfinance
+FRACTAL,2026-11-23,,Technology,Software - Infrastructure,yfinance
+GAIL,2026-11-23,,Utilities,Utilities - Regulated Gas,yfinance
+GVT&D,2026-11-23,,Industrials,Specialty Industrial Machinery,yfinance
+GMRAIRPORT,2026-11-23,,Industrials,Airports & Air Services,yfinance
+GABRIEL,2026-11-23,,Consumer Cyclical,Auto Parts,yfinance
+GALLANTT,2026-11-23,,Basic Materials,Steel,yfinance
+GRSE,2026-11-23,,Industrials,Aerospace & Defense,yfinance
+GICRE,2026-11-23,,Financial Services,Insurance - Reinsurance,yfinance
+GILLETTE,2026-11-23,,Consumer Defensive,Household & Personal Products,yfinance
+GLAND,2026-11-23,,Healthcare,Drug Manufacturers - Specialty & Generic,yfinance
+GLAXO,2026-11-23,,Healthcare,Drug Manufacturers - General,yfinance
+GLENMARK,2026-11-23,,Healthcare,Drug Manufacturers - Specialty & Generic,yfinance
+MEDANTA,2026-11-23,,Healthcare,Medical Care Facilities,yfinance
+GPIL,2026-11-23,,Basic Materials,Steel,yfinance
+GODFRYPHLP,2026-11-23,,Consumer Defensive,Tobacco,yfinance
+GODREJCP,2026-11-23,,Consumer Defensive,Household & Personal Products,yfinance
+GODREJIND,2026-11-23,,Industrials,Conglomerates,yfinance
+GODREJPROP,2026-11-23,,Real Estate,Real Estate - Development,yfinance
+GRANULES,2026-11-23,,Healthcare,Drug Manufacturers - Specialty & Generic,yfinance
+GRAPHITE,2026-11-23,,Industrials,Electrical Equipment & Parts,yfinance
+GRASIM,2026-11-23,,Basic Materials,Building Materials,yfinance
+GRAVITA,2026-11-23,,Industrials,Metal Fabrication,yfinance
+GESHIP,2026-11-23,,Industrials,Marine Shipping,yfinance
+FLUOROCHEM,2026-11-23,,Basic Materials,Specialty Chemicals,yfinance
+GMDCLTD,2026-11-23,,Energy,Thermal Coal,yfinance
+HBLENGINE,2026-11-23,,Industrials,Electrical Equipment & Parts,yfinance
+HCLTECH,2026-11-23,,Technology,Information Technology Services,yfinance
+HDBFS,2026-11-23,,Financial Services,Credit Services,yfinance
+HDFCAMC,2026-11-23,,Financial Services,Asset Management,yfinance
+HDFCBANK,2026-11-23,,Financial Services,Banks - Regional,yfinance
+HDFCLIFE,2026-11-23,,Financial Services,Insurance - Life,yfinance
+HEGAM,2026-11-23,,Industrials,Electrical Equipment & Parts,yfinance
+HFCL,2026-11-23,,Technology,Communication Equipment,yfinance
+HAVELLS,2026-11-23,,Industrials,Electrical Equipment & Parts,yfinance
+HEROMOTOCO,2026-11-23,,Consumer Cyclical,Auto Manufacturers,yfinance
+HEXT,2026-11-23,,Technology,Information Technology Services,yfinance
+HSCL,2026-11-23,,Basic Materials,Specialty Chemicals,yfinance
+HINDALCO,2026-11-23,,Basic Materials,Aluminum,yfinance
+HAL,2026-11-23,,Industrials,Aerospace & Defense,yfinance
+HINDCOPPER,2026-11-23,,Basic Materials,Copper,yfinance
+HINDPETRO,2026-11-23,,Energy,Oil & Gas Refining & Marketing,yfinance
+HINDUNILVR,2026-11-23,,Consumer Defensive,Household & Personal Products,yfinance
+HINDZINC,2026-11-23,,Basic Materials,Other Industrial Metals & Mining,yfinance
+POWERINDIA,2026-11-23,,Industrials,Electrical Equipment & Parts,yfinance
+HOMEFIRST,2026-11-23,,Financial Services,Mortgage Finance,yfinance
+HONASA,2026-11-23,,Consumer Defensive,Household & Personal Products,yfinance
+HONAUT,2026-11-23,,Industrials,Electrical Equipment & Parts,yfinance
+HUDCO,2026-11-23,,Financial Services,Credit Services,yfinance
+HYUNDAI,2026-11-23,,Consumer Cyclical,Auto Manufacturers,yfinance
+ICICIBANK,2026-11-23,,Financial Services,Banks - Regional,yfinance
+ICICILIFE,2026-11-23,,Financial Services,Insurance - Life,yfinance
+ICICIGI,2026-11-23,,Financial Services,Insurance - Diversified,yfinance
+ICICIAMC,2026-11-23,,Financial Services,Asset Management,yfinance
+IDBI,2026-11-23,,Financial Services,Banks - Regional,yfinance
+IDFCFIRSTB,2026-11-23,,Financial Services,Banks - Regional,yfinance
+IFCI,2026-11-23,,Financial Services,Credit Services,yfinance
+IIFL,2026-11-23,,Financial Services,Credit Services,yfinance
+INOXINDIA,2026-11-23,,Industrials,Specialty Industrial Machinery,yfinance
+IRB,2026-11-23,,Industrials,Infrastructure Operations,yfinance
+IRCON,2026-11-23,,Industrials,Engineering & Construction,yfinance
+ITCHOTELS,2026-11-23,,Consumer Cyclical,Resorts & Casinos,yfinance
+ITC,2026-11-23,,Consumer Defensive,Tobacco,yfinance
+ITI,2026-11-23,,Technology,Communication Equipment,yfinance
+INDIACEM,2026-11-23,,Basic Materials,Building Materials,yfinance
+INDIAMART,2026-11-23,,Consumer Cyclical,Internet Retail,yfinance
+INDIANB,2026-11-23,,Financial Services,Banks - Regional,yfinance
+IEX,2026-11-23,,Financial Services,Capital Markets,yfinance
+INDHOTEL,2026-11-23,,Consumer Cyclical,Lodging,yfinance
+IOC,2026-11-23,,Energy,Oil & Gas Refining & Marketing,yfinance
+IOB,2026-11-23,,Financial Services,Banks - Regional,yfinance
+IRCTC,2026-11-23,,Consumer Cyclical,Travel Services,yfinance
+IRFC,2026-11-23,,Financial Services,Credit Services,yfinance
+IREDA,2026-11-23,,Financial Services,Credit Services,yfinance
+IGL,2026-11-23,,Utilities,Utilities - Regulated Gas,yfinance
+INDUSTOWER,2026-11-23,,Communication Services,Telecom Services,yfinance
+INDUSINDBK,2026-11-23,,Financial Services,Banks - Regional,yfinance
+NAUKRI,2026-11-23,,Communication Services,Internet Content & Information,yfinance
+INFY,2026-11-23,,Technology,Information Technology Services,yfinance
+INOXWIND,2026-11-23,,Industrials,Specialty Industrial Machinery,yfinance
+INTELLECT,2026-11-23,,Technology,Software - Application,yfinance
+INDIGO,2026-11-23,,Industrials,Airlines,yfinance
+IGIL,2026-11-23,,Basic Materials,Other Precious Metals & Mining,yfinance
+IKS,2026-11-23,,Healthcare,Health Information Services,yfinance
+IPCALAB,2026-11-23,,Healthcare,Drug Manufacturers - Specialty & Generic,yfinance
+JKCEMENT,2026-11-23,,Basic Materials,Building Materials,yfinance
+JBMA,2026-11-23,,Consumer Cyclical,Auto Parts,yfinance
+JKTYRE,2026-11-23,,Consumer Cyclical,Auto Parts,yfinance
+JMFINANCIL,2026-11-23,,Financial Services,Capital Markets,yfinance
+JSWCEMENT,2026-11-23,,Basic Materials,Building Materials,yfinance
+JSWENERGY,2026-11-23,,Utilities,Utilities - Independent Power Producers,yfinance
+JSWINFRA,2026-11-23,,Industrials,Marine Shipping,yfinance
+JSWSTEEL,2026-11-23,,Basic Materials,Steel,yfinance
+JAINREC,2026-11-23,,Basic Materials,Other Industrial Metals & Mining,yfinance
+JPPOWER,2026-11-23,,Utilities,Utilities - Independent Power Producers,yfinance
+J&KBANK,2026-11-23,,Financial Services,Banks - Regional,yfinance
+JINDALSAW,2026-11-23,,Basic Materials,Steel,yfinance
+JSL,2026-11-23,,Basic Materials,Steel,yfinance
+JINDALSTEL,2026-11-23,,Basic Materials,Steel,yfinance
+JIOFIN,2026-11-23,,Financial Services,Asset Management,yfinance
+JUBLFOOD,2026-11-23,,Consumer Cyclical,Restaurants,yfinance
+JUBLINGREA,2026-11-23,,Basic Materials,Specialty Chemicals,yfinance
+JWL,2026-11-23,,Industrials,Railroads,yfinance
+JYOTICNC,2026-11-23,,Industrials,Specialty Industrial Machinery,yfinance
+KPRMILL,2026-11-23,,Consumer Cyclical,Textile Manufacturing,yfinance
+KEI,2026-11-23,,Industrials,Electrical Equipment & Parts,yfinance
+KPITTECH,2026-11-23,,Technology,Software - Application,yfinance
+KSB,2026-11-23,,Industrials,Specialty Industrial Machinery,yfinance
+KAJARIACER,2026-11-23,,Industrials,Building Products & Equipment,yfinance
+KPIL,2026-11-23,,Industrials,Engineering & Construction,yfinance
+KALYANKJIL,2026-11-23,,Consumer Cyclical,Luxury Goods,yfinance
+KARURVYSYA,2026-11-23,,Financial Services,Banks - Regional,yfinance
+KAYNES,2026-11-23,,Technology,Electronic Components,yfinance
+KEC,2026-11-23,,Industrials,Engineering & Construction,yfinance
+KFINTECH,2026-11-23,,Technology,Software - Application,yfinance
+KIRLOSBROS,2026-11-23,,Industrials,Specialty Industrial Machinery,yfinance
+KIRLOSENG,2026-11-23,,Industrials,Specialty Industrial Machinery,yfinance
+KOTAKBANK,2026-11-23,,Financial Services,Banks - Regional,yfinance
+KIMS,2026-11-23,,Healthcare,Medical Care Facilities,yfinance
+LTF,2026-11-23,,Financial Services,Credit Services,yfinance
+LTTS,2026-11-23,,Technology,Information Technology Services,yfinance
+LGEINDIA,2026-11-23,,Technology,Consumer Electronics,yfinance
+LICHSGFIN,2026-11-23,,Financial Services,Mortgage Finance,yfinance
+LTFOODS,2026-11-23,,Consumer Defensive,Packaged Foods,yfinance
+LTM,2026-11-23,,Technology,Information Technology Services,yfinance
+LT,2026-11-23,,Industrials,Engineering & Construction,yfinance
+LAURUSLABS,2026-11-23,,Healthcare,Drug Manufacturers - Specialty & Generic,yfinance
+LEMONTREE,2026-11-23,,Consumer Cyclical,Lodging,yfinance
+LENSKART,2026-11-23,,Healthcare,Medical Instruments & Supplies,yfinance
+LICI,2026-11-23,,Financial Services,Insurance - Life,yfinance
+LINDEINDIA,2026-11-23,,Basic Materials,Specialty Chemicals,yfinance
+LLOYDSME,2026-11-23,,Basic Materials,Steel,yfinance
+LODHA,2026-11-23,,Real Estate,Real Estate - Development,yfinance
+LUPIN,2026-11-23,,Healthcare,Drug Manufacturers - Specialty & Generic,yfinance
+MMTC,2026-11-23,,Industrials,Conglomerates,yfinance
+MRF,2026-11-23,,Consumer Cyclical,Auto Parts,yfinance
+MTARTECH,2026-11-23,,Industrials,Specialty Industrial Machinery,yfinance
+MGL,2026-11-23,,Utilities,Utilities - Regulated Gas,yfinance
+M&MFIN,2026-11-23,,Financial Services,Credit Services,yfinance
+M&M,2026-11-23,,Consumer Cyclical,Auto Manufacturers,yfinance
+MANAPPURAM,2026-11-23,,Financial Services,Credit Services,yfinance
+MRPL,2026-11-23,,Energy,Oil & Gas Refining & Marketing,yfinance
+MANKIND,2026-11-23,,Healthcare,Drug Manufacturers - Specialty & Generic,yfinance
+MARICO,2026-11-23,,Consumer Defensive,Household & Personal Products,yfinance
+MARUTI,2026-11-23,,Consumer Cyclical,Auto Manufacturers,yfinance
+MFSL,2026-11-23,,Financial Services,Insurance - Life,yfinance
+MAXHEALTH,2026-11-23,,Healthcare,Medical Care Facilities,yfinance
+MAZDOCK,2026-11-23,,Industrials,Aerospace & Defense,yfinance
+MEESHO,2026-11-23,,Consumer Cyclical,Internet Retail,yfinance
+MINDACORP,2026-11-23,,Consumer Cyclical,Auto Parts,yfinance
+MSUMI,2026-11-23,,Consumer Cyclical,Auto Parts,yfinance
+MOTILALOFS,2026-11-23,,Financial Services,Capital Markets,yfinance
+MPHASIS,2026-11-23,,Technology,Information Technology Services,yfinance
+MCX,2026-11-23,,Financial Services,Financial Data & Stock Exchanges,yfinance
+MUTHOOTFIN,2026-11-23,,Financial Services,Credit Services,yfinance
+NATCOPHARM,2026-11-23,,Healthcare,Drug Manufacturers - Specialty & Generic,yfinance
+NBCC,2026-11-23,,Industrials,Engineering & Construction,yfinance
+NCC,2026-11-23,,Industrials,Engineering & Construction,yfinance
+NHPC,2026-11-23,,Utilities,Utilities - Renewable,yfinance
+NLCINDIA,2026-11-23,,Utilities,Utilities - Regulated Electric,yfinance
+NMDC,2026-11-23,,Basic Materials,Steel,yfinance
+NSLNISP,2026-11-23,,Basic Materials,Steel,yfinance
+NTPCGREEN,2026-11-23,,Utilities,Utilities - Renewable,yfinance
+NTPC,2026-11-23,,Utilities,Utilities - Regulated Electric,yfinance
+NH,2026-11-23,,Healthcare,Medical Care Facilities,yfinance
+NATIONALUM,2026-11-23,,Basic Materials,Aluminum,yfinance
+NAVA,2026-11-23,,Industrials,Conglomerates,yfinance
+NAVINFLUOR,2026-11-23,,Basic Materials,Chemicals,yfinance
+NESTLEIND,2026-11-23,,Consumer Defensive,Packaged Foods,yfinance
+NETWEB,2026-11-23,,Technology,Computer Hardware,yfinance
+NEULANDLAB,2026-11-23,,Healthcare,Drug Manufacturers - Specialty & Generic,yfinance
+NAM-INDIA,2026-11-23,,Financial Services,Asset Management,yfinance
+NUVAMA,2026-11-23,,Financial Services,Asset Management,yfinance
+NUVOCO,2026-11-23,,Basic Materials,Building Materials,yfinance
+OBEROIRLTY,2026-11-23,,Real Estate,Real Estate - Development,yfinance
+ONGC,2026-11-23,,Energy,Oil & Gas Integrated,yfinance
+OIL,2026-11-23,,Energy,Oil & Gas Integrated,yfinance
+OLAELEC,2026-11-23,,Consumer Cyclical,Auto Manufacturers,yfinance
+OLECTRA,2026-11-23,,Industrials,Farm & Heavy Construction Machinery,yfinance
+PAYTM,2026-11-23,,Technology,Software - Infrastructure,yfinance
+ONESOURCE,2026-11-23,,Healthcare,Biotechnology,yfinance
+OFSS,2026-11-23,,Technology,Software - Infrastructure,yfinance
+POLICYBZR,2026-11-23,,Financial Services,Insurance Brokers,yfinance
+PCBL,2026-11-23,,Basic Materials,Specialty Chemicals,yfinance
+PGEL,2026-11-23,,Technology,Electronic Components,yfinance
+PIIND,2026-11-23,,Basic Materials,Agricultural Inputs,yfinance
+PNBHOUSING,2026-11-23,,Financial Services,Mortgage Finance,yfinance
+PTCIL,2026-11-23,,Industrials,Metal Fabrication,yfinance
+PVRINOX,2026-11-23,,Communication Services,Entertainment,yfinance
+PAGEIND,2026-11-23,,Consumer Cyclical,Apparel Manufacturing,yfinance
+PARADEEP,2026-11-23,,Basic Materials,Agricultural Inputs,yfinance
+PATANJALI,2026-11-23,,Consumer Defensive,Packaged Foods,yfinance
+PERSISTENT,2026-11-23,,Technology,Information Technology Services,yfinance
+PETRONET,2026-11-23,,Energy,Oil & Gas Refining & Marketing,yfinance
+PHOENIXLTD,2026-11-23,,Real Estate,Real Estate - Diversified,yfinance
+PWL,2026-11-23,,Consumer Defensive,Education & Training Services,yfinance
+PIDILITIND,2026-11-23,,Basic Materials,Specialty Chemicals,yfinance
+PINELABS,2026-11-23,,Technology,Software - Infrastructure,yfinance
+PIRAMALFIN,2026-11-23,,Financial Services,Credit Services,yfinance
+PPLPHARMA,2026-11-23,,Healthcare,Drug Manufacturers - Specialty & Generic,yfinance
+POLYMED,2026-11-23,,Healthcare,Medical Instruments & Supplies,yfinance
+POLYCAB,2026-11-23,,Industrials,Electrical Equipment & Parts,yfinance
+POONAWALLA,2026-11-23,,Financial Services,Credit Services,yfinance
+PFC,2026-11-23,,Financial Services,Credit Services,yfinance
+POWERGRID,2026-11-23,,Utilities,Utilities - Regulated Electric,yfinance
+PREMIERENE,2026-11-23,,Technology,Solar,yfinance
+PRESTIGE,2026-11-23,,Real Estate,Real Estate - Diversified,yfinance
+PFOCUS,2026-11-23,,Communication Services,Entertainment,yfinance
+PRIVISCL,2026-11-23,,Basic Materials,Specialty Chemicals,yfinance
+PNB,2026-11-23,,Financial Services,Banks - Regional,yfinance
+RRKABEL,2026-11-23,,Industrials,Electrical Equipment & Parts,yfinance
+RBLBANK,2026-11-23,,Financial Services,Banks - Regional,yfinance
+RECLTD,2026-11-23,,Financial Services,Credit Services,yfinance
+RHIM,2026-11-23,,Industrials,Metal Fabrication,yfinance
+RITES,2026-11-23,,Industrials,Engineering & Construction,yfinance
+RADICO,2026-11-23,,Consumer Defensive,Beverages - Wineries & Distilleries,yfinance
+RVNL,2026-11-23,,Industrials,Engineering & Construction,yfinance
+RAILTEL,2026-11-23,,Communication Services,Telecom Services,yfinance
+RAINBOW,2026-11-23,,Healthcare,Medical Care Facilities,yfinance
+RKFORGE,2026-11-23,,Industrials,Metal Fabrication,yfinance
+REDINGTON,2026-11-23,,Technology,Information Technology Services,yfinance
+RELIANCE,2026-11-23,,Energy,Oil & Gas Refining & Marketing,yfinance
+RPOWER,2026-11-23,,Utilities,Utilities - Independent Power Producers,yfinance
+RUBICON,2026-11-23,,Healthcare,Drug Manufacturers - General,yfinance
+SBICARD,2026-11-23,,Financial Services,Credit Services,yfinance
+SBILIFE,2026-11-23,,Financial Services,Insurance - Life,yfinance
+SJVN,2026-11-23,,Utilities,Utilities - Renewable,yfinance
+SHRIPISTON,2026-11-23,,Consumer Cyclical,Auto Parts,yfinance
+SRF,2026-11-23,,Industrials,Conglomerates,yfinance
+SAGILITY,2026-11-23,,Healthcare,Health Information Services,yfinance
+SAILIFE,2026-11-23,,Healthcare,Diagnostics & Research,yfinance
+SAMMAANCAP,2026-11-23,,Financial Services,Mortgage Finance,yfinance
+MOTHERSON,2026-11-23,,Consumer Cyclical,Auto Parts,yfinance
+SANSERA,2026-11-23,,Consumer Cyclical,Auto Parts,yfinance
+SARDAEN,2026-11-23,,Basic Materials,Steel,yfinance
+SCHAEFFLER,2026-11-23,,Consumer Cyclical,Auto Parts,yfinance
+SCHNEIDER,2026-11-23,,Industrials,Electrical Equipment & Parts,yfinance
+SCI,2026-11-23,,Industrials,Marine Shipping,yfinance
+SHREECEM,2026-11-23,,Basic Materials,Building Materials,yfinance
+SHRIRAMFIN,2026-11-23,,Financial Services,Credit Services,yfinance
+SHYAMMETL,2026-11-23,,Basic Materials,Steel,yfinance
+ENRIN,2026-11-23,,Utilities,Utilities - Renewable,yfinance
+SIEMENS,2026-11-23,,Industrials,Specialty Industrial Machinery,yfinance
+SIGNATURE,2026-11-23,,Real Estate,Real Estate - Development,yfinance
+SOBHA,2026-11-23,,Real Estate,Real Estate - Development,yfinance
+SOLARINDS,2026-11-23,,Basic Materials,Specialty Chemicals,yfinance
+SONACOMS,2026-11-23,,Consumer Cyclical,Auto Parts,yfinance
+STARHEALTH,2026-11-23,,Financial Services,Insurance - Life,yfinance
+SBIN,2026-11-23,,Financial Services,Banks - Regional,yfinance
+SAIL,2026-11-23,,Basic Materials,Steel,yfinance
+STLTECH,2026-11-23,,Technology,Communication Equipment,yfinance
+SUMICHEM,2026-11-23,,Basic Materials,Agricultural Inputs,yfinance
+SUNPHARMA,2026-11-23,,Healthcare,Drug Manufacturers - Specialty & Generic,yfinance
+SUNTV,2026-11-23,,Communication Services,Broadcasting,yfinance
+SUNDARMFIN,2026-11-23,,Financial Services,Credit Services,yfinance
+SUPREMEIND,2026-11-23,,Industrials,Building Products & Equipment,yfinance
+SUZLON,2026-11-23,,Industrials,Specialty Industrial Machinery,yfinance
+SWANCORP,2026-11-23,,Industrials,Conglomerates,yfinance
+SWIGGY,2026-11-23,,Consumer Cyclical,Internet Retail,yfinance
+SYNGENE,2026-11-23,,Healthcare,Diagnostics & Research,yfinance
+SYRMA,2026-11-23,,Technology,Electronic Components,yfinance
+TBOTEK,2026-11-23,,Consumer Cyclical,Travel Services,yfinance
+TDPOWERSYS,2026-11-23,,Industrials,Specialty Industrial Machinery,yfinance
+TVSMOTOR,2026-11-23,,Consumer Cyclical,Auto Manufacturers,yfinance
+TATACAP,2026-11-23,,Financial Services,Credit Services,yfinance
+TATACHEM,2026-11-23,,Basic Materials,Chemicals,yfinance
+TATACOMM,2026-11-23,,Communication Services,Telecom Services,yfinance
+TCS,2026-11-23,,Technology,Information Technology Services,yfinance
+TATACONSUM,2026-11-23,,Consumer Defensive,Packaged Foods,yfinance
+TATAELXSI,2026-11-23,,Technology,Software - Application,yfinance
+TATAINVEST,2026-11-23,,Financial Services,Asset Management,yfinance
+TMCV,2026-11-23,,Consumer Cyclical,Auto Manufacturers,yfinance
+TMPV,2026-11-23,,Consumer Cyclical,Auto Manufacturers,yfinance
+TATAPOWER,2026-11-23,,Utilities,Utilities - Independent Power Producers,yfinance
+TATASTEEL,2026-11-23,,Basic Materials,Steel,yfinance
+TATATECH,2026-11-23,,Technology,Information Technology Services,yfinance
+TTML,2026-11-23,,Communication Services,Telecom Services,yfinance
+TECHM,2026-11-23,,Technology,Information Technology Services,yfinance
+TECHNOE,2026-11-23,,Industrials,Engineering & Construction,yfinance
+TEGA,2026-11-23,,Industrials,Specialty Industrial Machinery,yfinance
+TEJASNET,2026-11-23,,Technology,Communication Equipment,yfinance
+TENNIND,2026-11-23,,Consumer Cyclical,Auto Parts,yfinance
+THANGAMAYL,2026-11-23,,Consumer Cyclical,Luxury Goods,yfinance
+NIACL,2026-11-23,,Financial Services,Insurance - Diversified,yfinance
+RAMCOCEM,2026-11-23,,Basic Materials,Building Materials,yfinance
+THERMAX,2026-11-23,,Industrials,Conglomerates,yfinance
+TIMKEN,2026-11-23,,Industrials,Tools & Accessories,yfinance
+TITAGARH,2026-11-23,,Industrials,Railroads,yfinance
+TITAN,2026-11-23,,Consumer Cyclical,Luxury Goods,yfinance
+TORNTPHARM,2026-11-23,,Healthcare,Drug Manufacturers - Specialty & Generic,yfinance
+TORNTPOWER,2026-11-23,,Utilities,Utilities - Independent Power Producers,yfinance
+TARIL,2026-11-23,,Industrials,Electrical Equipment & Parts,yfinance
+TRENT,2026-11-23,,Consumer Cyclical,Apparel Retail,yfinance
+TRIDENT,2026-11-23,,Consumer Cyclical,Textile Manufacturing,yfinance
+TRITURBINE,2026-11-23,,Industrials,Specialty Industrial Machinery,yfinance
+TIINDIA,2026-11-23,,Industrials,Conglomerates,yfinance
+UCOBANK,2026-11-23,,Financial Services,Banks - Regional,yfinance
+UNOMINDA,2026-11-23,,Consumer Cyclical,Auto Parts,yfinance
+UPL,2026-11-23,,Basic Materials,Agricultural Inputs,yfinance
+UTIAMC,2026-11-23,,Financial Services,Asset Management,yfinance
+ULTRACEMCO,2026-11-23,,Basic Materials,Building Materials,yfinance
+UNIONBANK,2026-11-23,,Financial Services,Banks - Regional,yfinance
+UBL,2026-11-23,,Consumer Defensive,Beverages - Brewers,yfinance
+UNITDSPR,2026-11-23,,Consumer Defensive,Beverages - Wineries & Distilleries,yfinance
+URBANCO,2026-11-23,,Technology,Software - Application,yfinance
+USHAMART,2026-11-23,,Basic Materials,Steel,yfinance
+VTL,2026-11-23,,Consumer Cyclical,Textile Manufacturing,yfinance
+VBL,2026-11-23,,Consumer Defensive,Beverages - Non-Alcoholic,yfinance
+VAML,2026-11-23,,Basic Materials,Aluminum,yfinance
+VISL,2026-11-23,,Basic Materials,Steel,yfinance
+VEDL,2026-11-23,,Basic Materials,Other Industrial Metals & Mining,yfinance
+VOGL,2026-11-23,,Basic Materials,Other Industrial Metals & Mining,yfinance
+VEDPOWER,2026-11-23,,Utilities,Utilities - Independent Power Producers,yfinance
+VIJAYA,2026-11-23,,Healthcare,Diagnostics & Research,yfinance
+VMM,2026-11-23,,Consumer Cyclical,Department Stores,yfinance
+IDEA,2026-11-23,,Communication Services,Telecom Services,yfinance
+VOLTAS,2026-11-23,,Consumer Cyclical,"Furnishings, Fixtures & Appliances",yfinance
+WAAREEENER,2026-11-23,,Technology,Solar,yfinance
+WELCORP,2026-11-23,,Basic Materials,Steel,yfinance
+WELSPUNLIV,2026-11-23,,Consumer Cyclical,Textile Manufacturing,yfinance
+WHIRLPOOL,2026-11-23,,Consumer Cyclical,"Furnishings, Fixtures & Appliances",yfinance
+WIPRO,2026-11-23,,Technology,Information Technology Services,yfinance
+WOCKPHARMA,2026-11-23,,Healthcare,Drug Manufacturers - Specialty & Generic,yfinance
+YESBANK,2026-11-23,,Financial Services,Banks - Regional,yfinance
+ZFCVINDIA,2026-11-23,,Consumer Cyclical,Auto Parts,yfinance
+ZEEL,2026-11-23,,Communication Services,Broadcasting,yfinance
+ZENTEC,2026-11-23,,Industrials,Aerospace & Defense,yfinance
+ZENSARTECH,2026-11-23,,Technology,Information Technology Services,yfinance
+ZYDUSLIFE,2026-11-23,,Healthcare,Drug Manufacturers - Specialty & Generic,yfinance
+ZYDUSWELL,2026-11-23,,Consumer Defensive,Packaged Foods,yfinance
+ECLERX,2026-11-23,,Technology,Information Technology Services,yfinance
+AXISCADES,2026-11-23,,Industrials,Engineering & Construction,yfinance
+AARTIPHARM,2026-11-23,,Healthcare,Drug Manufacturers - Specialty & Generic,yfinance
+ABFRL,2026-11-23,,Consumer Cyclical,Apparel Manufacturing,yfinance
+ABLBL,2026-11-23,,Consumer Cyclical,Apparel Retail,yfinance
+AVL,2026-11-23,,Consumer Cyclical,Specialty Retail,yfinance
+ADVENZYMES,2026-11-23,,Basic Materials,Specialty Chemicals,yfinance
+AEQUS,2026-11-23,,Industrials,Aerospace & Defense,yfinance
+AEROFLEX,2026-11-23,,Industrials,Metal Fabrication,yfinance
+AKUMS,2026-11-23,,Healthcare,Drug Manufacturers - Specialty & Generic,yfinance
+ALKYLAMINE,2026-11-23,,Basic Materials,Specialty Chemicals,yfinance
+AMAGI,2026-11-23,,Technology,Software - Application,yfinance
+APOLLO,2026-11-23,,Industrials,Aerospace & Defense,yfinance
+ACI,2026-11-23,,Basic Materials,Chemicals,yfinance
+ARVINDFASN,2026-11-23,,Consumer Cyclical,Apparel Retail,yfinance
+ARVIND,2026-11-23,,Consumer Cyclical,Textile Manufacturing,yfinance
+ASHAPURMIN,2026-11-23,,Basic Materials,Other Industrial Metals & Mining,yfinance
+ASHOKA,2026-11-23,,Industrials,Engineering & Construction,yfinance
+ASTRAMICRO,2026-11-23,,Technology,Communication Equipment,yfinance
+ATLANTAELE,2026-11-23,,Industrials,Electrical Equipment & Parts,yfinance
+AURIONPRO,2026-11-23,,Technology,Software - Application,yfinance
+AVALON,2026-11-23,,Technology,Electronic Components,yfinance
+BAJAJCON,2026-11-23,,Consumer Defensive,Household & Personal Products,yfinance
+BALAMINES,2026-11-23,,Basic Materials,Specialty Chemicals,yfinance
+BALUFORGE,2026-11-23,,Industrials,Metal Fabrication,yfinance
+BANCOINDIA,2026-11-23,,Consumer Cyclical,Auto Parts,yfinance
+BIRLACORPN,2026-11-23,,Basic Materials,Building Materials,yfinance
+BLACKBUCK,2026-11-23,,Technology,Software - Application,yfinance
+BLUEJET,2026-11-23,,Healthcare,Biotechnology,yfinance
+BLUESTONE,2026-11-23,,Consumer Cyclical,Luxury Goods,yfinance
+BORORENEW,2026-11-23,,Technology,Solar,yfinance
+MAPMYINDIA,2026-11-23,,Technology,Software - Infrastructure,yfinance
+CMRGREEN,2026-11-23,,Basic Materials,Aluminum,yfinance
+CMSINFO,2026-11-23,,Industrials,Specialty Business Services,yfinance
+CSBBANK,2026-11-23,,Financial Services,Banks - Regional,yfinance
+CAMPUS,2026-11-23,,Consumer Cyclical,Footwear & Accessories,yfinance
+CRAMC,2026-11-23,,Financial Services,Asset Management,yfinance
+CAPILLARY,2026-11-23,,Technology,Software - Application,yfinance
+CEIGALL,2026-11-23,,Industrials,Engineering & Construction,yfinance
+CELLO,2026-11-23,,Consumer Cyclical,"Furnishings, Fixtures & Appliances",yfinance
+CENTUM,2026-11-23,,Technology,Electronic Components,yfinance
+CERA,2026-11-23,,Industrials,Building Products & Equipment,yfinance
+CHALET,2026-11-23,,Consumer Cyclical,Lodging,yfinance
+DCBBANK,2026-11-23,,Financial Services,Banks - Regional,yfinance
+DATAMATICS,2026-11-23,,Technology,Information Technology Services,yfinance
+DIACABS,2026-11-23,,Industrials,Specialty Industrial Machinery,yfinance
+DBL,2026-11-23,,Industrials,Engineering & Construction,yfinance
+DYNAMATECH,2026-11-23,,Consumer Cyclical,Auto Parts,yfinance
+E2E,2026-11-23,,Technology,Software - Infrastructure,yfinance
+EPL,2026-11-23,,Consumer Cyclical,Packaging & Containers,yfinance
+EDELWEISS,2026-11-23,,Financial Services,Financial Conglomerates,yfinance
+EMIL,2026-11-23,,Consumer Cyclical,Specialty Retail,yfinance
+ELECTCAST,2026-11-23,,Industrials,Building Products & Equipment,yfinance
+ELLEN,2026-11-23,,Basic Materials,Chemicals,yfinance
+EMBDL,2026-11-23,,Real Estate,Real Estate - Diversified,yfinance
+ENTERO,2026-11-23,,Healthcare,Medical Distribution,yfinance
+EIEL,2026-11-23,,Industrials,Engineering & Construction,yfinance
+EQUITASBNK,2026-11-23,,Financial Services,Banks - Regional,yfinance
+ERIS,2026-11-23,,Healthcare,Drug Manufacturers - Specialty & Generic,yfinance
+FEDFINA,2026-11-23,,Financial Services,Credit Services,yfinance
+FIEMIND,2026-11-23,,Consumer Cyclical,Auto Parts,yfinance
+FINPIPE,2026-11-23,,Industrials,Building Products & Equipment,yfinance
+UTLSOLAR,2026-11-23,,Technology,Solar,yfinance
+GMRP&UI,2026-11-23,,Energy,Thermal Coal,yfinance
+EBGNG,2026-11-23,,Technology,Computer Hardware,yfinance
+GRWRHITECH,2026-11-23,,Basic Materials,Specialty Chemicals,yfinance
+GENUSPOWER,2026-11-23,,Industrials,Electrical Equipment & Parts,yfinance
+GODREJAGRO,2026-11-23,,Consumer Defensive,Packaged Foods,yfinance
+GOKEX,2026-11-23,,Consumer Cyclical,Apparel Manufacturing,yfinance
+GOKULAGRO,2026-11-23,,Consumer Defensive,Packaged Foods,yfinance
+GOLDIAM,2026-11-23,,Consumer Cyclical,Luxury Goods,yfinance
+GREAVESCOT,2026-11-23,,Industrials,Specialty Industrial Machinery,yfinance
+GRINDWELL,2026-11-23,,Industrials,Building Products & Equipment,yfinance
+GUJALKALI,2026-11-23,,Basic Materials,Chemicals,yfinance
+GAEL,2026-11-23,,Consumer Defensive,Packaged Foods,yfinance
+GNFC,2026-11-23,,Basic Materials,Chemicals,yfinance
+GPPL,2026-11-23,,Industrials,Marine Shipping,yfinance
+GSFC,2026-11-23,,Basic Materials,Agricultural Inputs,yfinance
+HGINFRA,2026-11-23,,Industrials,Engineering & Construction,yfinance
+HAPPSTMNDS,2026-11-23,,Technology,Information Technology Services,yfinance
+HAPPYFORGE,2026-11-23,,Industrials,Metal Fabrication,yfinance
+HCG,2026-11-23,,Healthcare,Medical Care Facilities,yfinance
+HERITGFOOD,2026-11-23,,Consumer Defensive,Packaged Foods,yfinance
+HCC,2026-11-23,,Industrials,Engineering & Construction,yfinance
+IFBIND,2026-11-23,,Consumer Cyclical,"Furnishings, Fixtures & Appliances",yfinance
+IIFLCAPS,2026-11-23,,Financial Services,Capital Markets,yfinance
+INDGN,2026-11-23,,Healthcare,Health Information Services,yfinance
+INDIAGLYCO,2026-11-23,,Basic Materials,Chemicals,yfinance
+IMFA,2026-11-23,,Basic Materials,Other Industrial Metals & Mining,yfinance
+INDIGOPNTS,2026-11-23,,Basic Materials,Specialty Chemicals,yfinance
+ICIL,2026-11-23,,Consumer Cyclical,Textile Manufacturing,yfinance
+IONEXCHANG,2026-11-23,,Industrials,Pollution & Treatment Controls,yfinance
+JAIBALAJI,2026-11-23,,Basic Materials,Steel,yfinance
+JKPAPER,2026-11-23,,Basic Materials,Paper & Paper Products,yfinance
+JAMNAAUTO,2026-11-23,,Consumer Cyclical,Auto Parts,yfinance
+JSFB,2026-11-23,,Financial Services,Banks - Regional,yfinance
+JAYNECOIND,2026-11-23,,Basic Materials,Steel,yfinance
+JSLL,2026-11-23,,Healthcare,Medical Care Facilities,yfinance
+JUBLPHARMA,2026-11-23,,Healthcare,Drug Manufacturers - Specialty & Generic,yfinance
+JUSTDIAL,2026-11-23,,Communication Services,Internet Content & Information,yfinance
+JYOTHYLAB,2026-11-23,,Consumer Defensive,Household & Personal Products,yfinance
+KNRCON,2026-11-23,,Industrials,Engineering & Construction,yfinance
+KPIGREEN,2026-11-23,,Utilities,Utilities - Renewable,yfinance
+KRBL,2026-11-23,,Consumer Defensive,Packaged Foods,yfinance
+KRN,2026-11-23,,Technology,Electronic Components,yfinance
+KANSAINER,2026-11-23,,Basic Materials,Specialty Chemicals,yfinance
+KTKBANK,2026-11-23,,Financial Services,Banks - Regional,yfinance
+KSCL,2026-11-23,,Basic Materials,Agricultural Inputs,yfinance
+KIRLPNU,2026-11-23,,Industrials,Specialty Industrial Machinery,yfinance
+KITEX,2026-11-23,,Consumer Cyclical,Apparel Manufacturing,yfinance
+KMEW,2026-11-23,,Industrials,Marine Shipping,yfinance
+KWIL,2026-11-23,,Consumer Defensive,Packaged Foods,yfinance
+LATENTVIEW,2026-11-23,,Industrials,Consulting Services,yfinance
+LXCHEM,2026-11-23,,Basic Materials,Specialty Chemicals,yfinance
+IXIGO,2026-11-23,,Consumer Cyclical,Travel Services,yfinance
+THELEELA,2026-11-23,,Consumer Cyclical,Lodging,yfinance
+LLOYDSENGG,2026-11-23,,Industrials,Specialty Industrial Machinery,yfinance
+LLOYDSENT,2026-11-23,,Basic Materials,Steel,yfinance
+LUMAXTECH,2026-11-23,,Consumer Cyclical,Auto Parts,yfinance
+LUMAXIND,2026-11-23,,Consumer Cyclical,Auto Parts,yfinance
+MOIL,2026-11-23,,Basic Materials,Other Industrial Metals & Mining,yfinance
+MSTCLTD,2026-11-23,,Industrials,Conglomerates,yfinance
+MBAPL,2026-11-23,,Basic Materials,Agricultural Inputs,yfinance
+MANORAMA,2026-11-23,,Consumer Defensive,Packaged Foods,yfinance
+MARKSANS,2026-11-23,,Healthcare,Drug Manufacturers - General,yfinance
+MASTEK,2026-11-23,,Technology,Information Technology Services,yfinance
+MEDPLUS,2026-11-23,,Healthcare,Pharmaceutical Retailers,yfinance
+METROPOLIS,2026-11-23,,Healthcare,Diagnostics & Research,yfinance
+MIDHANI,2026-11-23,,Basic Materials,Steel,yfinance
+BECTORFOOD,2026-11-23,,Consumer Defensive,Packaged Foods,yfinance
+NEOGEN,2026-11-23,,Basic Materials,Specialty Chemicals,yfinance
+NFL,2026-11-23,,Basic Materials,Agricultural Inputs,yfinance
+NAZARA,2026-11-23,,Communication Services,Electronic Gaming & Multimedia,yfinance
+NEPHROPLUS,2026-11-23,,Healthcare,Medical Care Facilities,yfinance
+NETWORK18,2026-11-23,,Communication Services,Entertainment,yfinance
+NEWGEN,2026-11-23,,Technology,Software - Infrastructure,yfinance
+NIVABUPA,2026-11-23,,Financial Services,Insurance - Life,yfinance
+NORTHARC,2026-11-23,,Financial Services,Credit Services,yfinance
+OMNI,2026-11-23,,Industrials,Specialty Industrial Machinery,yfinance
+KISSHT,2026-11-23,,Financial Services,Credit Services,yfinance
+OSWALPUMPS,2026-11-23,,Industrials,Electrical Equipment & Parts,yfinance
+PNGJL,2026-11-23,,Consumer Cyclical,Luxury Goods,yfinance
+PCJEWELLER,2026-11-23,,Consumer Cyclical,Luxury Goods,yfinance
+PDSL,2026-11-23,,Industrials,Specialty Business Services,yfinance
+PNCINFRA,2026-11-23,,Industrials,Engineering & Construction,yfinance
+PTC,2026-11-23,,Utilities,Utilities - Independent Power Producers,yfinance
+PAISALO,2026-11-23,,Financial Services,Credit Services,yfinance
+PARAS,2026-11-23,,Industrials,Aerospace & Defense,yfinance
+PARKHOSPS,2026-11-23,,Healthcare,Medical Care Facilities,yfinance
+PGIL,2026-11-23,,Consumer Cyclical,Apparel Manufacturing,yfinance
+PFIZER,2026-11-23,,Healthcare,Drug Manufacturers - General,yfinance
+PICCADIL,2026-11-23,,Consumer Defensive,Beverages - Wineries & Distilleries,yfinance
+POWERMECH,2026-11-23,,Industrials,Engineering & Construction,yfinance
+POWERICA,2026-11-23,,Industrials,Specialty Industrial Machinery,yfinance
+PRAJIND,2026-11-23,,Industrials,Engineering & Construction,yfinance
+PRECWIRE,2026-11-23,,Industrials,Electrical Equipment & Parts,yfinance
+PRICOLLTD,2026-11-23,,Consumer Cyclical,Auto Parts,yfinance
+PGHL,2026-11-23,,Healthcare,Drug Manufacturers - Specialty & Generic,yfinance
+PURVA,2026-11-23,,Real Estate,Real Estate - Development,yfinance
+QPOWER,2026-11-23,,Industrials,Electrical Equipment & Parts,yfinance
+QUESS,2026-11-23,,Industrials,Staffing & Employment Services,yfinance
+RAIN,2026-11-23,,Basic Materials,Specialty Chemicals,yfinance
+RALLIS,2026-11-23,,Basic Materials,Agricultural Inputs,yfinance
+RCF,2026-11-23,,Basic Materials,Agricultural Inputs,yfinance
+RATEGAIN,2026-11-23,,Technology,Software - Application,yfinance
+RATNAMANI,2026-11-23,,Basic Materials,Steel,yfinance
+RTNPOWER,2026-11-23,,Utilities,Utilities - Independent Power Producers,yfinance
+RAYMONDLSL,2026-11-23,,Consumer Cyclical,Apparel Manufacturing,yfinance
+REFEX,2026-11-23,,Energy,Thermal Coal,yfinance
+RELAXO,2026-11-23,,Consumer Cyclical,Footwear & Accessories,yfinance
+RELIGARE,2026-11-23,,Financial Services,Insurance - Life,yfinance
+RESPONIND,2026-11-23,,Basic Materials,Specialty Chemicals,yfinance
+RBA,2026-11-23,,Consumer Cyclical,Restaurants,yfinance
+ROUTE,2026-11-23,,Communication Services,Telecom Services,yfinance
+SJS,2026-11-23,,Consumer Cyclical,Auto Parts,yfinance
+SBFC,2026-11-23,,Financial Services,Credit Services,yfinance
+SEDEMAC,2026-11-23,,Consumer Cyclical,Auto Parts,yfinance
+SGMART,2026-11-23,,Industrials,Industrial Distribution,yfinance
+SIGMAADV,2026-11-23,,Industrials,Aerospace & Defense,yfinance
+SKYGOLD,2026-11-23,,Consumer Cyclical,Luxury Goods,yfinance
+SMLMAH,2026-11-23,,Consumer Cyclical,Auto Manufacturers,yfinance
+LOTUSDEV,2026-11-23,,Industrials,Engineering & Construction,yfinance
+SAFARI,2026-11-23,,Consumer Cyclical,Footwear & Accessories,yfinance
+SAMHI,2026-11-23,,Consumer Cyclical,Lodging,yfinance
+SANDUMA,2026-11-23,,Basic Materials,Steel,yfinance
+SAPPHIRE,2026-11-23,,Consumer Cyclical,Restaurants,yfinance
+SAREGAMA,2026-11-23,,Communication Services,Entertainment,yfinance
+SENCO,2026-11-23,,Consumer Cyclical,Luxury Goods,yfinance
+SENORES,2026-11-23,,Healthcare,Drug Manufacturers - General,yfinance
+SHADOWFAX,2026-11-23,,Industrials,Integrated Freight & Logistics,yfinance
+SHAILY,2026-11-23,,Basic Materials,Specialty Chemicals,yfinance
+SHAKTIPUMP,2026-11-23,,Industrials,Specialty Industrial Machinery,yfinance
+SHARDACROP,2026-11-23,,Basic Materials,Agricultural Inputs,yfinance
+SHAREINDIA,2026-11-23,,Financial Services,Capital Markets,yfinance
+SFL,2026-11-23,,Consumer Cyclical,"Furnishings, Fixtures & Appliances",yfinance
+SHILCTECH,2026-11-23,,Industrials,Electrical Equipment & Parts,yfinance
+SHILPAMED,2026-11-23,,Healthcare,Drug Manufacturers - Specialty & Generic,yfinance
+RENUKA,2026-11-23,,Consumer Defensive,Confectioners,yfinance
+SHREEJISPG,2026-11-23,,Industrials,Marine Shipping,yfinance
+SKIPPER,2026-11-23,,Industrials,Engineering & Construction,yfinance
+SONATSOFTW,2026-11-23,,Technology,Information Technology Services,yfinance
+SOUTHBANK,2026-11-23,,Financial Services,Banks - Regional,yfinance
+SWSOLAR,2026-11-23,,Technology,Solar,yfinance
+STAR,2026-11-23,,Healthcare,Drug Manufacturers - Specialty & Generic,yfinance
+STYLAMIND,2026-11-23,,Consumer Cyclical,"Furnishings, Fixtures & Appliances",yfinance
+SUBROS,2026-11-23,,Consumer Cyclical,Auto Parts,yfinance
+SUDARSCHEM,2026-11-23,,Basic Materials,Specialty Chemicals,yfinance
+SUDEEPPHRM,2026-11-23,,Healthcare,Drug Manufacturers - Specialty & Generic,yfinance
+SPARC,2026-11-23,,Healthcare,Drug Manufacturers - Specialty & Generic,yfinance
+SUNDRMFAST,2026-11-23,,Consumer Cyclical,Auto Parts,yfinance
+SUNFLAG,2026-11-23,,Basic Materials,Steel,yfinance
+SUNTECK,2026-11-23,,Real Estate,Real Estate - Development,yfinance
+SPLPETRO,2026-11-23,,Basic Materials,Specialty Chemicals,yfinance
+SUPRIYA,2026-11-23,,Healthcare,Biotechnology,yfinance
+SURYAROSNI,2026-11-23,,Basic Materials,Steel,yfinance
+SUVEN,2026-11-23,,Healthcare,Drug Manufacturers - Specialty & Generic,yfinance
+TARC,2026-11-23,,Real Estate,Real Estate - Development,yfinance
+TTKPRESTIG,2026-11-23,,Consumer Cyclical,"Furnishings, Fixtures & Appliances",yfinance
+TVSSCS,2026-11-23,,Industrials,Integrated Freight & Logistics,yfinance
+TMB,2026-11-23,,Financial Services,Banks - Regional,yfinance
+TANLA,2026-11-23,,Technology,Software - Application,yfinance
+TEXRAIL,2026-11-23,,Industrials,Railroads,yfinance
+THOMASCOOK,2026-11-23,,Consumer Cyclical,Travel Services,yfinance
+THYROCARE,2026-11-23,,Healthcare,Diagnostics & Research,yfinance
+TI,2026-11-23,,Consumer Defensive,Beverages - Wineries & Distilleries,yfinance
+TIMETECHNO,2026-11-23,,Consumer Cyclical,Packaging & Containers,yfinance
+TIMEX,2026-11-23,,Consumer Cyclical,Luxury Goods,yfinance
+TIPSMUSIC,2026-11-23,,Communication Services,Entertainment,yfinance
+TRANSRAILL,2026-11-23,,Industrials,Engineering & Construction,yfinance
+UJJIVANSFB,2026-11-23,,Financial Services,Banks - Regional,yfinance
+UNIMECH,2026-11-23,,Industrials,Aerospace & Defense,yfinance
+VGUARD,2026-11-23,,Industrials,Electrical Equipment & Parts,yfinance
+VMART,2026-11-23,,Consumer Cyclical,Department Stores,yfinance
+VIPIND,2026-11-23,,Consumer Cyclical,Footwear & Accessories,yfinance
+V2RETAIL,2026-11-23,,Consumer Cyclical,Apparel Retail,yfinance
+DBREALTY,2026-11-23,,Real Estate,Real Estate - Development,yfinance
+WABAG,2026-11-23,,Industrials,Engineering & Construction,yfinance
+VAIBHAVGBL,2026-11-23,,Consumer Cyclical,Luxury Goods,yfinance
+MANYAVAR,2026-11-23,,Consumer Cyclical,Apparel Manufacturing,yfinance
+VESUVIUS,2026-11-23,,Industrials,Specialty Industrial Machinery,yfinance
+VIKRAMSOLR,2026-11-23,,Technology,Solar,yfinance
+VIYASH,2026-11-23,,Healthcare,Drug Manufacturers - Specialty & Generic,yfinance
+VOLTAMP,2026-11-23,,Industrials,Electrical Equipment & Parts,yfinance
+WAAREERTL,2026-11-23,,Industrials,Engineering & Construction,yfinance
+WAKEFIT,2026-11-23,,Consumer Cyclical,"Furnishings, Fixtures & Appliances",yfinance
+WEWORK,2026-11-23,,Real Estate,Real Estate Services,yfinance
+WEBELSOLAR,2026-11-23,,Technology,Solar,yfinance
+WELENT,2026-11-23,,Industrials,Engineering & Construction,yfinance
+WESTLIFE,2026-11-23,,Consumer Cyclical,Restaurants,yfinance
+YATHARTH,2026-11-23,,Healthcare,Medical Care Facilities,yfinance
+ZAGGLE,2026-11-23,,Technology,Software - Infrastructure,yfinance
+ADVAIT,2026-11-23,,Industrials,Specialty Industrial Machinery,yfinance
+AEROPLANE,2026-11-23,,Consumer Defensive,Farm Products,yfinance
+ALGOQUANT,2026-11-23,,Financial Services,Capital Markets,yfinance
+AONESTEELS,2026-11-23,,Basic Materials,Steel,yfinance
+ASHIKAG,2026-11-23,,Financial Services,Credit Services,yfinance
+AYE,2026-11-23,,Financial Services,Credit Services,yfinance
+BENGALASM,2026-11-23,,Consumer Cyclical,Auto Parts,yfinance
+BONFIG,2026-11-23,,Industrials,Specialty Industrial Machinery,yfinance
+BUILDPRO,2026-11-23,,Consumer Cyclical,Home Improvement Retail,yfinance
+CMLL,2026-11-23,,Energy,Thermal Coal,yfinance
+COCKERILL,2026-11-23,,Industrials,Metal Fabrication,yfinance
+CORDELIA,2026-11-23,,Industrials,Marine Shipping,yfinance
+DECNGOLD,2026-11-23,,Basic Materials,Gold,yfinance
+DEEPA,2026-11-23,,Consumer Cyclical,Luxury Goods,yfinance
+DHOOTTRANS,2026-11-23,,Consumer Cyclical,Auto Parts,yfinance
+EDELALTS,2026-11-23,,Financial Services,Asset Management,yfinance
+ELANTAS,2026-11-23,,Basic Materials,Specialty Chemicals,yfinance
+ELEVATE,2026-11-23,,Consumer Cyclical,Lodging,yfinance
+ESDS,2026-11-23,,Technology,Information Technology Services,yfinance
+EVONILE,2026-11-23,,Healthcare,Drug Manufacturers - Specialty & Generic,yfinance
+FREDUN,2026-11-23,,Healthcare,Drug Manufacturers - Specialty & Generic,yfinance
+FUSIONCX,2026-11-23,,Industrials,Specialty Business Services,yfinance
+GLASSWALL,2026-11-23,,Industrials,Engineering & Construction,yfinance
+GRAUWEIL,2026-11-23,,Basic Materials,Specialty Chemicals,yfinance
+GSPCROP,2026-11-23,,Basic Materials,Agricultural Inputs,yfinance
+GSPLTRANS,2026-11-23,,Energy,Oil & Gas Midstream,yfinance
+HAWKINCOOK,2026-11-23,,Consumer Cyclical,"Furnishings, Fixtures & Appliances",yfinance
+HDFIRE,2026-11-23,,Industrials,Specialty Industrial Machinery,yfinance
+HEROMOTORS,2026-11-23,,Consumer Cyclical,Auto Parts,yfinance
+HORIZONIND,2026-11-23,,Real Estate,Real Estate - Development,yfinance
+IGLSPIRITS,2026-11-23,,Consumer Defensive,Beverages - Wineries & Distilleries,yfinance
+INDOMIM,2026-11-23,,Industrials,Metal Fabrication,yfinance
+JAYKAY,2026-11-23,,Industrials,Specialty Business Services,yfinance
+JNPR,2026-11-23,,Utilities,Utilities - Renewable,yfinance
+JPL,2026-11-23,,Technology,Software - Infrastructure,yfinance
+KAMAHOLD,2026-11-23,,Industrials,Conglomerates,yfinance
+KANOHAR,2026-11-23,,Industrials,Electrical Equipment & Parts,yfinance
+KENNAMET,2026-11-23,,Industrials,Tools & Accessories,yfinance
+KIRLFER,2026-11-23,,Industrials,Metal Fabrication,yfinance
+KMCSHIL,2026-11-23,,Healthcare,Medical Care Facilities,yfinance
+KNACK,2026-11-23,,Consumer Cyclical,Packaging & Containers,yfinance
+KOVAI,2026-11-23,,Healthcare,Medical Care Facilities,yfinance
+KPL,2026-11-23,,Healthcare,Drug Manufacturers - Specialty & Generic,yfinance
+KRISHNADEF,2026-11-23,,Industrials,Specialty Industrial Machinery,yfinance
+KSHINTL,2026-11-23,,Industrials,Electrical Equipment & Parts,yfinance
+KUSUMGAR,2026-11-23,,Consumer Cyclical,Textile Manufacturing,yfinance
+LALITHAA,2026-11-23,,Consumer Cyclical,Luxury Goods,yfinance
+LASERPOWER,2026-11-23,,Industrials,Electrical Equipment & Parts,yfinance
+LCCPROJECT,2026-11-23,,Industrials,Infrastructure Operations,yfinance
+LCL,2026-11-23,,Industrials,Specialty Industrial Machinery,yfinance
+LEAPIND,2026-11-23,,Industrials,Integrated Freight & Logistics,yfinance
+LUMINO,2026-11-23,,Industrials,Electrical Equipment & Parts,yfinance
+MANIPALHOS,2026-11-23,,Healthcare,Medical Care Facilities,yfinance
+MARSONS,2026-11-23,,Industrials,Electrical Equipment & Parts,yfinance
+MILKYMIST,2026-11-23,,Consumer Defensive,Packaged Foods,yfinance
+MMWL,2026-11-23,,Communication Services,Entertainment,yfinance
+MOLBIO,2026-11-23,,Healthcare,Medical Devices,yfinance
+MONEYVIEW,2026-11-23,,Technology,Software - Application,yfinance
+MVELECTRO,2026-11-23,,Industrials,Electrical Equipment & Parts,yfinance
+NIRLON,2026-11-23,,Real Estate,Real Estate Services,yfinance
+ORIENTCABL,2026-11-23,,Industrials,Electrical Equipment & Parts,yfinance
+PARASHLTH,2026-11-23,,Healthcare,Medical Care Facilities,yfinance
+PRASOLCHEM,2026-11-23,,Basic Materials,Specialty Chemicals,yfinance
+RUNWALENTR,2026-11-23,,Real Estate,Real Estate - Development,yfinance
+SAIPARENT,2026-11-23,,Healthcare,Drug Manufacturers - General,yfinance
+SBIFUNDS,2026-11-23,,Financial Services,Asset Management,yfinance
+SEIL,2026-11-23,,Consumer Defensive,Education & Training Services,yfinance
+SFCTECH,2026-11-23,,Industrials,Pollution & Treatment Controls,yfinance
+SHIPROCKET,2026-11-23,,Technology,Software - Application,yfinance
+SHUKRAMED,2026-11-23,,Healthcare,Drug Manufacturers - Specialty & Generic,yfinance
+SIKA,2026-11-23,,Industrials,Aerospace & Defense,yfinance
+SKFINDUS,2026-11-23,,Industrials,Tools & Accessories,yfinance
+SMT,2026-11-23,,Healthcare,Medical Devices,yfinance
+SSRETAIL,2026-11-23,,Consumer Cyclical,Specialty Retail,yfinance
+SYMBIOTEC,2026-11-23,,Healthcare,Drug Manufacturers - General,yfinance
+TECHNOCRAF,2026-11-23,,Industrials,Infrastructure Operations,yfinance
+TECHNVISN,2026-11-23,,Technology,Software - Application,yfinance
+TONBO,2026-11-23,,Industrials,Aerospace & Defense,yfinance
+TRIVENIPT,2026-11-23,,Industrials,Specialty Industrial Machinery,yfinance
+VARMORA,2026-11-23,,Basic Materials,Building Materials,yfinance
+WELSPLSOL,2026-11-23,,Basic Materials,Steel,yfinance
+WPIL,2026-11-23,,Industrials,Specialty Industrial Machinery,yfinance
+ZETWERK,2026-11-23,,Industrials,Metal Fabrication,yfinance
+GNRL,2026-11-23,,Energy,Oil & Gas E&P,yfinance
+JKSHAH,2026-11-23,,Consumer Defensive,Education & Training Services,yfinance

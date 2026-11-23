@@ -1,0 +1,52 @@
+name: step4-backfill
+
+on:
+  workflow_dispatch:
+    inputs:
+      start:
+        description: "Start date (YYYY-MM-DD). Leave blank for 2021-11-01"
+        required: false
+        default: ""
+      end:
+        description: "End date (YYYY-MM-DD). Leave blank for yesterday"
+        required: false
+        default: ""
+      actions_only:
+        description: "Only re-run split/bonus detection (true/false)"
+        required: false
+        default: "false"
+
+permissions:
+  contents: write
+
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - name: Load data
+        run: |
+          ARGS="--max-minutes 320"
+          [ -n "${{ inputs.start }}" ] && ARGS="$ARGS --start ${{ inputs.start }}"
+          [ -n "${{ inputs.end }}" ] && ARGS="$ARGS --end ${{ inputs.end }}"
+          [ "${{ inputs.actions_only }}" = "true" ] && ARGS="$ARGS --actions-only"
+          python scripts/step4_backfill.py $ARGS
+      - name: Save data to the repo
+        if: always()
+        run: |
+          git config user.name "backfill-bot"
+          git config user.email "backfill-bot@users.noreply.github.com"
+          git add data
+          git diff --cached --quiet || git commit -m "Step 4 backfill $(date -u +%F)"
+          git pull --rebase
+          git push
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: step4-report
+          path: step4_report.xlsx
