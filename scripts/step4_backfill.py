@@ -78,7 +78,7 @@ def read_csv(content):
         with zipfile.ZipFile(io.BytesIO(content)) as z:
             content = z.read(z.namelist()[0])
     df = pd.read_csv(io.BytesIO(content), dtype=str)
-    df.columns = [c.strip() for c in df.columns]
+    df.columns = [c.replace("\ufeff", "").strip() for c in df.columns]
     for c in df.columns:
         df[c] = df[c].str.strip()
     return df
@@ -118,8 +118,14 @@ def stock_prices(d):
 
 def delivery(d):
     df = read_csv(fetch(f"{ARCH}/products/content/sec_bhavdata_full_{d:%d%m%Y}.csv"))
-    return pd.DataFrame({"symbol": df["SYMBOL"], "series": df["SERIES"],
-                         "deliv_qty": num(df["DELIV_QTY"]), "deliv_pct": num(df["DELIV_PER"])})
+    up = {c.upper().replace(" ", "_"): c for c in df.columns}
+    need = {"symbol": "SYMBOL", "series": "SERIES", "deliv_qty": "DELIV_QTY", "deliv_pct": "DELIV_PER"}
+    missing = [v for v in need.values() if v not in up]
+    if missing:
+        raise RuntimeError(f"delivery file columns missing {missing}; got {list(df.columns)[:8]}")
+    out = pd.DataFrame({k: df[up[v]] for k, v in need.items()})
+    out["deliv_qty"], out["deliv_pct"] = num(out["deliv_qty"]), num(out["deliv_pct"])
+    return out
 
 
 def indices(d):
@@ -175,10 +181,11 @@ def write_log(log_df):
 def backfill(start, end, max_minutes):
     t0 = time.time()
     log_df = read_log()
-    done = set(log_df.loc[log_df["status"].isin(["ok", "holiday"]), "date"])
+    done = set(log_df.loc[log_df["status"].isin(["ok", "holiday", "no_session"]), "date"])
     days = [start + timedelta(n) for n in range((end - start).days + 1)]
-    todo = [d for d in days if d.weekday() < 5 and d.isoformat() not in done]
-    print(f"{len(todo)} weekdays to load between {start} and {end} ({len(done)} already done)")
+    # G2: weekends too - NSE holds special sessions (Muhurat, Budget day, DR-test Saturdays)
+    todo = [d for d in days if d.isoformat() not in done]
+    print(f"{len(todo)} days to check between {start} and {end} ({len(done)} already done)")
     price_buf, index_buf, new_log = {}, {}, []
     fails_in_row, stopped = 0, None
 
@@ -189,7 +196,20 @@ def backfill(start, end, max_minutes):
         row = {"date": d.isoformat(), "stocks": 0, "deliv_matched": 0, "indices": 0, "note": "",
                "loaded_at": datetime.now().isoformat(timespec="seconds")}
         got = {}
+        if d.weekday() >= 5:  # weekend: only continue if NSE published an index file that day
+            try:
+                got["idx"] = indices(d)
+            except NotFound:
+                row["status"] = "no_session"
+                new_log.append(row)
+                continue
+            except Exception as e:
+                row["status"], row["note"] = "partial", f"idx: {str(e)[:120]}"
+                new_log.append(row)
+                continue
         for name, fn in (("idx", indices), ("px", stock_prices), ("dl", delivery)):
+            if name in got:
+                continue
             try:
                 got[name] = fn(d)
             except NotFound:
@@ -242,70 +262,153 @@ def load_prices(cols=None):
     return pd.concat([pd.read_parquet(f, columns=cols) for f in files], ignore_index=True) if files else pd.DataFrame()
 
 
-def detect_actions():
-    px = load_prices(["date", "isin", "symbol", "series", "close", "prev_close"])
-    if px.empty:
-        return pd.DataFrame()
-    px = px.sort_values(["isin", "date", "series"]).drop_duplicates(["isin", "date"], keep="first")
-    px["last_close"] = px.groupby("isin")["close"].shift(1)
-    px["last_date"] = px.groupby("isin")["date"].shift(1)
-    px["factor"] = px["last_close"] / px["prev_close"]
-    ev = px[(px["factor"] - 1).abs() > ACTION_THRESHOLD].dropna(subset=["factor"]).copy()
-    latest_sym = px.sort_values("date").groupby("isin")["symbol"].last()
-    ev["current_symbol"] = ev["isin"].map(latest_sym)
-    ev = ev.rename(columns={"date": "ex_date", "close": "ex_close"})[
-        ["isin", "symbol", "current_symbol", "ex_date", "last_date", "last_close", "prev_close", "ex_close", "factor"]]
-    ev["factor"] = ev["factor"].round(4)
+def isin_links(px):
+    """A face-value split gives a stock a NEW ISIN while the symbol continues. Link old -> latest ISIN
+    when the same symbol ends on one ISIN and starts on another within 10 days. Saved to meta."""
+    span = px.groupby(["symbol", "isin"])["date"].agg(["min", "max"]).reset_index()
+    links = []
+    for sym, g in span.sort_values("min").groupby("symbol"):
+        rows = g.to_dict("records")
+        for a, b in zip(rows, rows[1:]):
+            if a["isin"] != b["isin"] and 0 < (b["min"] - a["max"]).days <= 10:
+                links.append({"old_isin": a["isin"], "new_isin": b["isin"], "symbol": sym,
+                              "old_last_date": a["max"].date(), "new_first_date": b["min"].date()})
+    lk = pd.DataFrame(links, columns=["old_isin", "new_isin", "symbol", "old_last_date", "new_first_date"])
+    META.mkdir(parents=True, exist_ok=True)
+    lk.to_csv(META / "isin_links.csv", index=False)
+    step = dict(zip(lk["old_isin"], lk["new_isin"]))
 
-    # keep earlier decisions (and any manual edits) for events already reviewed
-    old = pd.read_csv(ACTIONS, parse_dates=["ex_date"]) if ACTIONS.exists() else pd.DataFrame()
-    if not old.empty:
-        key_old = set(zip(old["isin"], old["ex_date"]))
-        ev = ev[[(i, d) not in key_old for i, d in zip(ev["isin"], ev["ex_date"])]]
-    print(f"{len(ev)} new candidate corporate actions; checking with yfinance")
-    ev = verify_with_yfinance(ev)
-    allev = pd.concat([old, ev], ignore_index=True).sort_values(["ex_date", "isin"])
-    ACTIONS.parent.mkdir(parents=True, exist_ok=True)
-    allev.to_csv(ACTIONS, index=False)
-    return allev
+    def final(i):
+        seen = set()
+        while i in step and i not in seen:
+            seen.add(i)
+            i = step[i]
+        return i
+    return {i: final(i) for i in step}
 
 
-def verify_with_yfinance(ev):
-    """yfinance 'Close' (auto_adjust=False) is split/bonus-adjusted but not dividend-adjusted.
-    The jump in raw/yf ratio across the ex-date should equal our factor."""
+def _snap(f):
+    """Snap a factor to a clean ratio (2, 10, 1.5, 4/3 ...) if within 1%."""
+    from fractions import Fraction
+    fr = Fraction(f).limit_denominator(10)
+    return float(fr) if abs(float(fr) / f - 1) < 0.01 else round(f, 4)
+
+
+def yf_closes(symbols, start):
+    """yfinance daily Close (auto_adjust=False -> split/bonus adjusted, NOT dividend adjusted)."""
     import yfinance as yf
-    ev = ev.copy()
-    ev["yf_factor"], ev["status"], ev["note"] = None, "review", ""
-    fails = 0
-    for idx, r in ev.iterrows():
-        if fails >= 10:
-            ev.at[idx, "note"] = "yfinance unavailable (10 failures in a row)"
-            continue
+    out, missing = {}, []
+    syms = list(symbols)
+    for i in range(0, len(syms), 50):
+        chunk = syms[i:i + 50]
         try:
-            h = yf.Ticker(f"{r['current_symbol']}.NS").history(
-                start=r["last_date"] - timedelta(days=3), end=r["ex_date"] + timedelta(days=3),
-                auto_adjust=False)
-            time.sleep(0.4)
-            if h.empty:
-                raise RuntimeError("no yfinance data")
-            h.index = h.index.tz_localize(None).normalize()
-            yb, ya = h["Close"].get(r["last_date"]), h["Close"].get(r["ex_date"])
-            if yb is None or ya is None or pd.isna(yb) or pd.isna(ya):
-                raise RuntimeError("dates missing in yfinance")
-            # raw/yf ratio before the ex-date includes this split; after it doesn't -> their ratio = factor
-            yf_factor = (r["last_close"] / yb) / (r["ex_close"] / ya)
-            ev.at[idx, "yf_factor"] = round(float(yf_factor), 4)
+            data = yf.download([f"{x}.NS" for x in chunk], start=start, auto_adjust=False,
+                               group_by="ticker", threads=True, progress=False)
+        except Exception:
+            data = None
+        for x in chunk:
+            try:
+                c = data[f"{x}.NS"]["Close"].dropna()
+                if len(c) < 5:
+                    raise KeyError
+                c.index = pd.to_datetime(c.index).tz_localize(None).normalize()
+                out[x] = c
+            except Exception:
+                missing.append(x)
+        print(f"  yfinance {min(i + 50, len(syms))}/{len(syms)}")
+        time.sleep(2)
+    # second pass, one by one, for anything the bulk call missed
+    fails = 0
+    for x in list(missing):
+        if fails >= 10:
+            break
+        try:
+            c = yf.Ticker(f"{x}.NS").history(start=start, auto_adjust=False)["Close"].dropna()
+            time.sleep(0.5)
+            if len(c) < 5:
+                raise KeyError
+            c.index = pd.to_datetime(c.index).tz_localize(None).normalize()
+            out[x] = c
+            missing.remove(x)
             fails = 0
-            if abs(yf_factor / r["factor"] - 1) < YF_MATCH_TOL:
-                ev.at[idx, "status"] = "applied"
-            elif abs(yf_factor - 1) < YF_MATCH_TOL:
-                ev.at[idx, "status"] = "ignored"
-                ev.at[idx, "note"] = "yfinance shows no split/bonus (likely dividend, rights or data quirk)"
-            else:
-                ev.at[idx, "note"] = "yfinance factor differs - review"
-        except Exception as e:
+        except Exception:
             fails += 1
-            ev.at[idx, "note"] = str(e)[:120]
+    return out, missing
+
+
+def detect_actions():
+    """G1: ratio = NSE raw close / yfinance adjusted close. A lasting step in the ratio = split/bonus.
+    factor = median ratio (5 days before) / median ratio (5 days after). Applied only if NSE's own
+    overnight move, once adjusted, is between -20% and +20%. Safety net: raw overnight moves beyond
+    +/-35% that no applied factor explains go to 'review'. Universe stocks only."""
+    if not MASTER.exists():
+        print("No universe file - skipping corporate actions")
+        return pd.DataFrame()
+    m = pd.read_csv(MASTER)
+    m = m[m["status"] == "active"][["isin", "symbol"]]
+    px = load_prices(["date", "isin", "symbol", "series", "close"])
+    link = isin_links(px)
+    px["isin"] = px["isin"].map(lambda i: link.get(i, i))   # pre-split history joins the current ISIN
+    px = px[px["isin"].isin(m["isin"])]
+    px = px.sort_values(["isin", "date", "series"]).drop_duplicates(["isin", "date"], keep="first")
+    yfc, missing = yf_closes(m["symbol"], start=str(DEFAULT_START - timedelta(days=10)))
+    print(f"yfinance prices for {len(yfc)}/{len(m)} stocks; missing {len(missing)}")
+
+    events = []
+    for isin, sym in zip(m["isin"], m["symbol"]):
+        g = px[px["isin"] == isin].set_index("date")["close"]
+        if len(g) < 3:
+            continue
+        raw_ret = g / g.shift(1)
+        applied_dates = set()
+        if sym in yfc:
+            j = pd.concat([g.rename("raw"), yfc[sym].rename("yf")], axis=1, join="inner").dropna()
+            j = j[j["yf"] > 0]
+            ratio = j["raw"] / j["yf"]
+            step = ratio.shift(1) / ratio
+            for d in step[(step - 1).abs() > 0.08].index:
+                pos = ratio.index.get_loc(d)
+                before = ratio.iloc[max(0, pos - 5):pos].median()
+                after = ratio.iloc[pos:pos + 5].median()
+                f = before / after
+                if abs(f - 1) < 0.08:
+                    continue  # one-day glitch, not a lasting step
+                f = _snap(f)
+                prev_d = ratio.index[pos - 1]
+                adj_move = (j.at[d, "raw"] * f) / j.at[prev_d, "raw"] - 1
+                ok = -0.20 < adj_move < 0.20
+                events.append({"isin": isin, "symbol": sym, "ex_date": d, "last_date": prev_d,
+                               "last_close": j.at[prev_d, "raw"], "ex_close": j.at[d, "raw"],
+                               "factor": f, "adj_move_pct": round(adj_move * 100, 1),
+                               "status": "applied" if ok else "review",
+                               "note": "" if ok else "adjusted move still beyond +/-20% - check"})
+                if ok:
+                    applied_dates.add(d)
+        # safety net: big unexplained raw moves
+        for d, r in raw_ret[(raw_ret - 1).abs() > 0.35].items():
+            if d in applied_dates:
+                continue
+            events.append({"isin": isin, "symbol": sym, "ex_date": d, "last_date": None,
+                           "last_close": None, "ex_close": g.get(d), "factor": None,
+                           "adj_move_pct": round((r - 1) * 100, 1), "status": "review",
+                           "note": "big move with no split/bonus found" +
+                                   (" (no yfinance data)" if sym not in yfc else "")})
+    ev = pd.DataFrame(events)
+    if not ev.empty:
+        ev = ev.drop_duplicates(["isin", "ex_date", "status"]).sort_values(["ex_date", "symbol"])
+        ev["current_symbol"] = ev["symbol"]
+    # keep any manual decisions (status manual_apply / manual_ignore) from earlier runs
+    if ACTIONS.exists():
+        old = pd.read_csv(ACTIONS, parse_dates=["ex_date"])
+        if "adj_move_pct" in old:  # only files from this method
+            man = old[old["status"].astype(str).str.startswith("manual")]
+            if len(man):
+                key = set(zip(man["isin"], man["ex_date"]))
+                ev = pd.concat([ev[[(i, d) not in key for i, d in zip(ev["isin"], ev["ex_date"])]], man])
+    ev["method"] = "yf_ratio_v2"
+    ACTIONS.parent.mkdir(parents=True, exist_ok=True)
+    ev.to_csv(ACTIONS, index=False)
+    pd.DataFrame({"symbol_without_yfinance_data": missing}).to_csv(META / "yfinance_missing.csv", index=False)
     return ev
 
 
@@ -321,7 +424,7 @@ def report(stopped, actions):
     ok = log_df[log_df.status.str.startswith("ok")].copy()
     med = ok["stocks"].median() if len(ok) else 0
     problems = pd.concat([
-        log_df[~log_df.status.isin(["ok", "holiday"])],
+        log_df[~log_df.status.isin(["ok", "holiday", "no_session"])],
         ok[ok["stocks"] < 0.8 * med].assign(note=lambda x: x["note"] + "stock count unusually low"),
     ])
     sheets["Problem_days"] = problems
@@ -341,6 +444,12 @@ def report(stopped, actions):
         if MASTER.exists():
             m = pd.read_csv(MASTER)
             m = m[m["status"] == "active"]
+            link_file = META / "isin_links.csv"
+            if link_file.exists():
+                lk = pd.read_csv(link_file)
+                step = dict(zip(lk["old_isin"], lk["new_isin"]))
+                for _ in range(5):
+                    px["isin"] = px["isin"].map(lambda i: step.get(i, i))
             g = px.groupby("isin").agg(first_date=("date", "min"), last_date=("date", "max"), days=("date", "nunique"))
             cov = m[["isin", "symbol", "company", "tag"]].merge(g, left_on="isin", right_index=True, how="left")
             sheets["Universe_coverage"] = cov.sort_values("first_date", ascending=False)
@@ -369,6 +478,8 @@ def report(stopped, actions):
                        "status": hit["status"].iloc[0] if len(hit) else "NOT DETECTED"})
         sheets["Known_event_check"] = pd.DataFrame(kc)
         checks.update({f"actions {k}": int(v) for k, v in actions["status"].value_counts().items()})
+    if (META / "isin_links.csv").exists():
+        checks["ISIN changes linked (face-value splits)"] = len(pd.read_csv(META / "isin_links.csv"))
 
     size_mb = sum(f.stat().st_size for f in DATA.rglob("*.parquet")) / 1e6
     summary = [("status", stopped or "complete"), ("storage (parquet) MB", round(size_mb, 1)),
