@@ -62,8 +62,10 @@ def freshness():
     checked = lg[lg["status"].isin(["ok", "ok_no_delivery", "holiday", "no_session"])]
     last_price = pd.to_datetime(ok["date"]).max().date() if len(ok) else None
     last_checked = pd.to_datetime(checked["date"]).max().date() if len(checked) else None
-    stale = last_checked is None or last_checked < expected_trading_date()
-    return last_price, stale
+    expected = expected_trading_date()
+    stale = last_checked is None or last_checked < expected
+    pending = bool(((pd.to_datetime(lg["date"]).dt.date == expected) & (lg["status"] == "pending")).any())
+    return last_price, ("pending" if stale and pending else stale)
 
 
 def banner(st):
@@ -71,7 +73,10 @@ def banner(st):
     last, stale = freshness()
     if last is None:
         return
-    if stale:
+    if stale == "pending":
+        st.caption(f"Data as of **{last:%a %d %b %Y}** · today's NSE files aren't published yet "
+                   "(market holiday or a late upload) — the next run will check again.")
+    elif stale:
         st.warning(f"Data as of **{last:%a %d %b %Y}** — the daily refresh looks behind. "
                    "Check the GitHub Actions tab.", icon="⚠️")
     else:

@@ -49,6 +49,11 @@ S = requests.Session()
 S.headers.update(HEADERS)
 
 
+def ist_today():
+    from datetime import timezone
+    return datetime.now(timezone(timedelta(hours=5, minutes=30))).date()
+
+
 class NotFound(Exception):
     pass
 
@@ -237,7 +242,7 @@ def backfill(start, end, max_minutes):
             try:
                 got["idx"] = indices(d)
             except NotFound:
-                row["status"] = "no_session"
+                row["status"] = "pending" if d >= ist_today() else "no_session"
                 new_log.append(row)
                 continue
             except Exception as e:
@@ -256,7 +261,9 @@ def backfill(start, end, max_minutes):
                 row["note"] += f"{name}: {str(e)[:120]}; "
 
         if all(isinstance(got.get(k), str) for k in ("idx", "px")):
-            row["status"] = "holiday"
+            # No files. For TODAY (India time) this may just mean NSE hasn't published yet, so keep it
+            # 'pending' (retried by the catch-up run and tomorrow's run); only past days become 'holiday'.
+            row["status"] = "pending" if d >= ist_today() else "holiday"
         elif isinstance(got.get("px"), pd.DataFrame) and isinstance(got.get("idx"), pd.DataFrame):
             px = got["px"]
             if isinstance(got.get("dl"), pd.DataFrame):
@@ -501,7 +508,7 @@ def report(stopped, actions):
     ok = log_df[log_df.status.str.startswith("ok")].copy()
     med = ok["stocks"].median() if len(ok) else 0
     problems = pd.concat([
-        log_df[~log_df.status.isin(["ok", "holiday", "no_session"])],
+        log_df[~log_df.status.isin(["ok", "holiday", "no_session", "pending"])],
         ok[ok["stocks"] < 0.8 * med].assign(note=lambda x: x["note"] + "stock count unusually low"),
     ])
     sheets["Problem_days"] = problems
