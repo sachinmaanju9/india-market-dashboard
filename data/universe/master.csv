@@ -538,7 +538,7 @@ INE218I01013,CRAMC,Canara Robeco Asset Management Company Ltd.,Financial Service
 INE0ILV01024,CAPILLARY,Capillary Technologies India Ltd.,Information Technology,NEXT250,,Nifty IPO,0,Software - Application,Technology,yfinance,NSE list,Equity,4032.0,active,2026-11-24,2026-11-22
 INE0AG901020,CEIGALL,Ceigall India Ltd.,Construction,NEXT250,,Nifty Construction,1,Engineering & Construction,Industrials,yfinance,NSE list,Equity,6555.3,active,2026-11-24,2026-11-22
 INE0LMW01024,CELLO,Cello World Ltd.,Consumer Durables,NEXT250,,,0,"Furnishings, Fixtures & Appliances",Consumer Cyclical,yfinance,NSE list,Equity,8484.8,active,2026-11-24,2026-11-22
-INE320B01020,CENTUM,Centum Electronics Ltd.,Capital Goods,NEXT250,,,0,Electronic Components,Technology,yfinance,NSE list,Equity,6121.8,active,2026-11-24,2026-11-22
+INE320B01020,CENTUM,Centum Electronics Ltd.,Capital Goods,NEXT250,,,0,Electronic Components,Technology,yfinance,NSE list,Equity,6113.1,active,2026-11-24,2026-11-22
 INE739E01017,CERA,Cera Sanitaryware Ltd,Consumer Durables,NEXT250,,,0,Building Products & Equipment,Industrials,yfinance,NSE list,Equity,6548.7,active,2026-11-24,2026-11-22
 INE427F01016,CHALET,Chalet Hotels Ltd.,Consumer Services,NEXT250,,Nifty Consumer Services,1,Lodging,Consumer Cyclical,yfinance,NSE list,Equity,19036.1,active,2026-11-24,2026-11-22
 INE503A01015,DCBBANK,DCB Bank Ltd.,Financial Services,NEXT250,,,0,Banks - Regional,Financial Services,yfinance,NSE list,Equity,7667.8,active,2026-11-24,2026-11-22
@@ -633,7 +633,7 @@ INE870D01012,NFL,National Fertilizers Ltd.,Chemicals,NEXT250,,,0,Agricultural In
 INE418L01047,NAZARA,Nazara Technologies Ltd.,Media Entertainment & Publication,NEXT250,,Nifty Media,1,Electronic Gaming & Multimedia,Communication Services,yfinance,NSE list,Equity,16749.6,active,2026-11-24,2026-11-22
 INE428V01029,NEPHROPLUS,Nephrocare Health Services Ltd.,Healthcare,NEXT250,,Nifty IPO,0,Medical Care Facilities,Healthcare,yfinance,NSE list,Equity,6669.6,active,2026-11-24,2026-11-22
 INE870H01013,NETWORK18,Network18 Media & Investments Ltd.,Media Entertainment & Publication,NEXT250,,Nifty Media,1,Entertainment,Communication Services,yfinance,NSE list,Equity,3868.9,active,2026-11-24,2026-11-22
-INE619B01017,NEWGEN,Newgen Software Technologies Ltd.,Information Technology,NEXT250,,,0,Software - Infrastructure,Technology,yfinance,NSE list,Equity,5813.1,active,2026-11-24,2026-11-22
+INE619B01017,NEWGEN,Newgen Software Technologies Ltd.,Information Technology,NEXT250,,,0,Software - Infrastructure,Technology,yfinance,NSE list,Equity,5805.2,active,2026-11-24,2026-11-22
 INE995S01015,NIVABUPA,Niva Bupa Health Insurance Company Ltd.,Financial Services,NEXT250,,Nifty Insurance,1,Insurance - Life,Financial Services,yfinance,NSE list,Equity,13853.8,active,2026-11-24,2026-11-22
 INE850M01015,NORTHARC,Northern Arc Capital Ltd.,Financial Services,NEXT250,,Nifty NBFC,1,Credit Services,Financial Services,yfinance,NSE list,Equity,4473.8,active,2026-11-24,2026-11-22
 INE0UH301010,OMNI,Omnitech Engineering Ltd.,Capital Goods,NEXT250,,Nifty IPO,0,Specialty Industrial Machinery,Industrials,yfinance,NSE list,Equity,6379.9,active,2026-11-24,2026-11-22
@@ -724,7 +724,7 @@ INE332A01027,THOMASCOOK,Thomas Cook (India) Ltd.,Consumer Services,NEXT250,,Nift
 INE594H01019,THYROCARE,Thyrocare Technologies Ltd.,Healthcare,NEXT250,,,0,Diagnostics & Research,Healthcare,yfinance,NSE list,Equity,8640.5,active,2026-11-24,2026-11-22
 INE133E01013,TI,Tilaknagar Industries Ltd.,Fast Moving Consumer Goods,NEXT250,,,0,Beverages - Wineries & Distilleries,Consumer Defensive,yfinance,NSE list,Equity,13656.7,active,2026-11-24,2026-11-22
 INE508G01029,TIMETECHNO,Time Technoplast Ltd.,Capital Goods,NEXT250,,,0,Packaging & Containers,Consumer Cyclical,yfinance,NSE list,Equity,9448.2,active,2026-11-24,2026-11-22
-INE064A01026,TIMEX,Timex Group India Ltd.,Consumer Durables,NEXT250,,,0,Luxury Goods,Consumer Cyclical,yfinance,NSE list,Equity,7135.1,active,2026-11-24,2026-11-22
+INE064A01026,TIMEX,Timex Group India Ltd.,Consumer Durables,NEXT250,,,0,Luxury Goods,Consumer Cyclical,yfinance,NSE list,Equity,,active,2026-11-24,2026-11-22
 INE716B01029,TIPSMUSIC,Tips Music Ltd.,Media Entertainment & Publication,NEXT250,,Nifty Media,1,Entertainment,Communication Services,yfinance,NSE list,Equity,10238.9,active,2026-11-24,2026-11-22
 INE454P01035,TRANSRAILL,Transrail Lighting Ltd.,Capital Goods,NEXT250,,,0,Engineering & Construction,Industrials,yfinance,NSE list,Equity,5696.7,active,2026-11-24,2026-11-22
 INE551W01018,UJJIVANSFB,Ujjivan Small Finance Bank Ltd.,Financial Services,NEXT250,,,0,Banks - Regional,Financial Services,yfinance,NSE list,Equity,11822.7,active,2026-11-24,2026-11-22
@@ -796,11 +796,13 @@ INE177F01017,KOVAI,Kovai Medical Center & Hospital Limited,Healthcare,NEWLIST,20
 INE552U01010,KPL,Kwality Pharmaceuticals Limited,Healthcare,NEWLIST,2026-04-20,,0,Drug Manufacturers - Specialty & Generic,Healthcare,yfinance,inferred,Equity,4323.0,active,2026-11-24,2026-11-22
 INE0J5601015,KRISHNADEF,Krishna Defence And Allied Industries Limited,Capital Goods,NEWLIST,2025-12-30,,0,Specialty Industrial Machinery,Industrials,yfinance,inferred,Equity,1801.1,active,2026-11-24,2026-11-22
 INE987S01020,KSHINTL,KSH International Limited,Capital Goods,IPO,2025-12-23,Nifty IPO,0,Electrical Equipment & Parts,Industrials,yfinance,inferred,Equity,6866.2,active,2026-11-24,2026-11-22
+INE0ISX01025,KUSUMGAR,Kusumgar Limited,Textiles,IPO,2026-07-15,Nifty IPO,0,Textile Manufacturing,Consumer Cyclical,yfinance,inferred,Equity,,active,2026-11-24,2026-11-22
 INE0K9O01026,LALITHAA,Lalithaa Jewellery Mart Limited,Consumer Durables,IPO,2026-08-24,Nifty IPO,0,Luxury Goods,Consumer Cyclical,yfinance,inferred,Equity,17314.6,active,2026-11-24,2026-11-22
 INE17IR01028,LASERPOWER,Laser Power & Infra Limited,Capital Goods,IPO,2026-07-16,Nifty IPO,0,Electrical Equipment & Parts,Industrials,yfinance,inferred,Equity,2626.9,active,2026-11-24,2026-11-22
 INE1FPN01026,LCCPROJECT,LCC Projects Limited,Construction,IPO,2026-09-17,Nifty IPO,0,Infrastructure Operations,Industrials,yfinance,inferred,Equity,3582.7,active,2026-11-24,2026-11-22
 INE0QJW01029,LCL,Lohia Corp Limited,Capital Goods,IPO,2026-07-30,Nifty IPO,0,Specialty Industrial Machinery,Industrials,yfinance,inferred,Equity,4904.3,active,2026-11-24,2026-11-22
 INE00GO01025,LEAPIND,LEAP India Limited,Services,IPO,2026-08-14,Nifty IPO,0,Integrated Freight & Logistics,Industrials,yfinance,inferred,Equity,5744.2,active,2026-11-24,2026-11-22
+INE185Q01025,LUMINO,Lumino Industries Limited,Capital Goods,IPO,2026-09-03,Nifty IPO,0,Electrical Equipment & Parts,Industrials,yfinance,inferred,Equity,2708.4,active,2026-11-24,2026-11-22
 INE459N01021,MANIPALHOS,Manipal Health Enterprises Limited,Healthcare,IPO,2026-08-05,Nifty IPO,0,Medical Care Facilities,Healthcare,yfinance,inferred,Equity,92642.0,active,2026-11-24,2026-11-22
 INE415B01044,MARSONS,Marsons Limited,Capital Goods,NEWLIST,2026-03-13,,0,Electrical Equipment & Parts,Industrials,yfinance,inferred,Equity,2731.1,active,2026-11-24,2026-11-22
 INE00IT01020,MILKYMIST,Milky Mist Dairy Food Limited,Fast Moving Consumer Goods,IPO,2026-08-18,Nifty IPO,0,Packaged Foods,Consumer Defensive,yfinance,inferred,Equity,26132.3,active,2026-11-24,2026-11-22
@@ -823,6 +825,7 @@ INE438E01032,SIKA,Sika Interplant Systems Limited,Capital Goods,NEWLIST,2026-04-
 INE2J8701016,SKFINDUS,SKF India (Industrial) Limited,Capital Goods,NEWLIST,2025-12-05,,0,Tools & Accessories,Industrials,yfinance,inferred,Equity,12226.5,active,2026-11-24,2026-11-22
 INE356Y01018,SMT,Sahajanand Medical Technologies Limited,Healthcare,IPO,2026-10-23,Nifty IPO,0,Medical Devices,Healthcare,yfinance,manual,Equity,5666.3,active,2026-11-24,2026-11-22
 INE1EQW01028,SSRETAIL,SS Retail Limited,Consumer Services,IPO,2026-09-23,Nifty IPO,0,Specialty Retail,Consumer Cyclical,yfinance,inferred,Equity,4842.1,active,2026-11-24,2026-11-22
+INE899I01028,SYMBIOTEC,Symbiotec Pharmalab Limited,Healthcare,IPO,2026-09-01,Nifty IPO,0,Drug Manufacturers - General,Healthcare,yfinance,inferred,Equity,10040.7,active,2026-11-24,2026-11-22
 INE1D0W01018,TECHNOCRAF,Technocraft Ventures Limited,Construction,IPO,2026-08-14,Nifty IPO,0,Infrastructure Operations,Industrials,yfinance,inferred,Equity,2056.0,active,2026-11-24,2026-11-22
 INE314H01012,TECHNVISN,TechNVision Ventures Limited,Information Technology,NEWLIST,2026-04-20,,0,Software - Application,Technology,yfinance,inferred,Equity,2297.3,active,2026-11-24,2026-11-22
 INE0LDG01026,TONBO,Tonbo Imaging India Limited,Capital Goods,IPO,2026-10-23,Nifty IPO,0,Aerospace & Defense,Industrials,yfinance,inferred,Equity,8042.4,active,2026-11-24,2026-11-22
@@ -831,8 +834,5 @@ INE0M5301040,VARMORA,Varmora Granito Limited,Construction Materials,IPO,2026-09-
 INE731F01037,WELSPLSOL,Welspun Specialty Solutions Limited,Metals & Mining,NEWLIST,2026-04-20,,0,Steel,Basic Materials,yfinance,inferred,Equity,3158.0,active,2026-11-24,2026-11-22
 INE765D01022,WPIL,WPIL Limited,Capital Goods,NEWLIST,2026-04-20,,0,Specialty Industrial Machinery,Industrials,yfinance,inferred,Equity,3443.4,active,2026-11-24,2026-11-22
 INE09PO01019,ZETWERK,Zetwerk Manufacturing Businesses Limited,Capital Goods,IPO,2026-10-23,Nifty IPO,0,Metal Fabrication,Industrials,yfinance,inferred,Equity,30821.9,active,2026-11-24,2026-11-22
-INE0ISX01025,KUSUMGAR,Kusumgar Limited,Textiles,IPO,2026-07-15,Nifty IPO,0,Textile Manufacturing,Consumer Cyclical,yfinance,inferred,Equity,5628.1,active,2026-11-23,2026-11-22
-INE185Q01025,LUMINO,Lumino Industries Limited,Capital Goods,IPO,2026-09-03,Nifty IPO,0,Electrical Equipment & Parts,Industrials,yfinance,inferred,Equity,2760.8,active,2026-11-23,2026-11-22
-INE899I01028,SYMBIOTEC,Symbiotec Pharmalab Limited,Healthcare,IPO,2026-09-01,Nifty IPO,0,Drug Manufacturers - General,Healthcare,yfinance,inferred,Equity,10148.6,active,2026-11-23,2026-11-22
 DUM545A01024,DUMMYHEG,Dummy HEG Ltd.,Capital Goods,N500,,Nifty Smallcap 250,0,,,,NSE list,,,dropped,2026-11-23,2026-11-22
 DUM510W01014,DUMMYINXGN,Dummy Inox Green Ltd.,Construction,NEXT250,,,0,,,,NSE list,,,dropped,2026-11-23,2026-11-22
