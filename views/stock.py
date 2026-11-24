@@ -348,7 +348,8 @@ with tabs[5]:
                                 "Sector median": st.column_config.NumberColumn(format="%.1f"),
                                 "Cheaper than … % of sector": st.column_config.NumberColumn(format="%.0f")})
     st.caption(f"Sector = NSE industry **{r['nse_industry']}** ({len(peers_ind)} stocks). "
-               "Dividend yield = last 12 months' dividends ÷ price (yfinance, refreshed weekly).")
+               "Dividend yield = indicated annual dividend per share (yfinance) ÷ NSE price, refreshed weekly; "
+               "can include special dividends.")
     # P/E history band (DD3): price / EPS of the latest fiscal year already reported (60-day lag)
     eps = fs[(fs["freq"] == "annual") & fs["item"].isin(["Diluted EPS", "Basic EPS"])]
     eps = eps.sort_values("item").drop_duplicates("period_end").set_index("period_end")["value"].sort_index()
