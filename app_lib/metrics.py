@@ -241,6 +241,7 @@ def _fund_one(sym, rows, close, shares_info, is_fin):
                   cr0 > cr1, (sh0 <= sh1 * 1.001) if pd.notna(sh0) and pd.notna(sh1) else False,
                   gm0 > gm1, at0 > at1]
         o["piotroski"] = int(sum(bool(x) for x in checks if not pd.isna(x)))
+        o["piotroski_checks"] = "".join("1" if (not pd.isna(x) and bool(x)) else "0" for x in checks)
         o["piotroski_gm_basis"] = gm
         # Magic Formula inputs
         nwc = (g("cur_assets", y0) - (g("cash", y0) if pd.notna(g("cash", y0)) else 0)) - g("cur_liab", y0)
@@ -280,6 +281,7 @@ def fundamentals(st, info, master, last_close, usdinr=None):
     f = pd.DataFrame(rows)
     f["is_financial"] = f["symbol"].isin(fin)
     f["usd_converted"] = f["symbol"].isin(usd)
+    f.attrs["statements"] = st          # statements after USD conversion (for the deep-dive)
     return f
 
 

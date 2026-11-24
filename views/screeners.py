@@ -158,7 +158,10 @@ def show_table(df, key_cols):
     spec = base + [c for c in key_cols if c[0] != "momentum_score"] + tail
     spec = [c for c in spec if c[0] in df]
     out = df[[c[0] for c in spec]].rename(columns={c[0]: c[1] for c in spec})
-    cfg = {"Score": st.column_config.ProgressColumn("Score", min_value=0, max_value=100, format="%.0f")}
+    out.insert(0, "Open", "/stock?symbol=" + df["symbol"].values)
+    cfg = {"Score": st.column_config.ProgressColumn("Score", min_value=0, max_value=100, format="%.0f"),
+           "Open": st.column_config.LinkColumn("Open", display_text="🔬", width="small",
+                                               help="Open the stock deep-dive")}
     for col, label, fmt in spec:
         if fmt and label not in cfg:
             cfg[label] = st.column_config.NumberColumn(label, format=fmt)
@@ -166,7 +169,8 @@ def show_table(df, key_cols):
         out["Breakout date"] = pd.to_datetime(out["Breakout date"]).dt.strftime("%d %b")
     out["Score"] = out["Score"].clip(lower=0)
     st.dataframe(out, hide_index=True, width="stretch", column_config=cfg, height=min(36 * (len(out) + 1), 720))
-    st.download_button("Download CSV", out.to_csv(index=False).encode(), file_name=f"{choice}.csv", mime="text/csv")
+    st.download_button("Download CSV", out.drop(columns="Open").to_csv(index=False).encode(),
+                       file_name=f"{choice}.csv", mime="text/csv")
 
 
 if choice == "Overview – all screens":

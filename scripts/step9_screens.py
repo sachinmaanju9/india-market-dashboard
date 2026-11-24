@@ -53,7 +53,10 @@ def main():
     master = master[master["status"] == "active"]
     print(f"{len(master)} active stocks")
 
-    px = load_adjusted(master["isin"], start=pd.Timestamp.today() - pd.Timedelta(days=800))
+    full = load_adjusted(master["isin"])
+    full[["date", "isin", "symbol", "open", "high", "low", "close", "raw_close", "volume", "value", "deliv_pct"]] \
+        .to_parquet("data/prices/adjusted_universe.parquet", index=False)        # for the stock deep-dive
+    px = full[full["date"] >= pd.Timestamp.today() - pd.Timedelta(days=800)]
     tech = M.technical(px).reset_index()
     print(f"technical: {len(tech)} stocks ({time.time() - t0:.0f}s)")
 
@@ -61,6 +64,7 @@ def main():
     info = pd.read_parquet("data/fundamentals/yf_info.parquet")
     last_close = dict(zip(master["symbol"], master["isin"].map(tech.set_index("isin")["close"])))
     fund = M.fundamentals(st, info, master, last_close, usdinr_series())
+    fund.attrs["statements"].to_parquet("data/fundamentals/statements_inr.parquet", index=False)
     print(f"fundamentals: {len(fund)} stocks; USD-converted: {fund.loc[fund.usd_converted, 'symbol'].tolist()}")
 
     own_file = Path("data/fundamentals/ownership.parquet")

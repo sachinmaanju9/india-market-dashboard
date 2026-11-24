@@ -66,6 +66,7 @@ def load_adjusted(isins=None, start=None):
             for _, ev in g.iterrows():
                 f = f * np.where(d.values < np.datetime64(ev["ex_date"]), float(ev["factor"]), 1.0)
             px.loc[m, "adj"] = f
+    px["raw_close"] = px["close"]
     for c in ("open", "high", "low", "close"):
         px[c] = px[c] / px["adj"]
     px["volume"] = px["volume"] * px["adj"]
