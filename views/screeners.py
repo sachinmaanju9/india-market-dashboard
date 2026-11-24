@@ -8,24 +8,26 @@ import sys
 from pathlib import Path as _P
 sys.path.insert(0, str(_P(__file__).resolve().parents[1]))
 from app_lib import screens as SC  # noqa: E402
+from app_lib import store  # noqa: E402
 
 SHORT = {"Nifty 50": "Nifty 50", "Nifty Smallcap 250": "Smallcap 250", "Nifty Bank": "Bank Nifty"}
 
 
 @st.cache_data(ttl=3600, show_spinner="Loading screen data…")
 def load():
-    m = pd.read_parquet("data/screens/metrics_latest.parquet")
-    b = pd.read_csv("data/screens/bench_returns.csv")
+    m = pd.read_parquet(store.path("data/screens/metrics_latest.parquet"))
+    b = pd.read_csv(store.path("data/screens/bench_returns.csv"))
     return m, b
 
 
-if not Path("data/screens/metrics_latest.parquet").exists():
-    st.warning("No screen data yet. Run the `screens` task on GitHub (or `python scripts/step9_screens.py`).")
+try:
+    m, bench = load()
+except Exception as e:
+    st.warning(f"Screen data not available yet ({e}). Run the daily-refresh workflow on GitHub.")
     st.stop()
-
-m, bench = load()
 asof = pd.to_datetime(m["last_date"]).max()
 st.title("Screeners")
+store.banner(st)
 st.caption(f"Prices up to **{asof:%d %b %Y}** · results from yfinance (latest quarter mostly Jul–Sep 2026) · "
            "ownership from NSE shareholding filings")
 

@@ -157,13 +157,49 @@ def append_parquet(path, new, keys):
     new.to_parquet(path, index=False)
 
 
+def _current_month_start():
+    return pd.Timestamp(date.today().replace(day=1))
+
+
 def flush(price_buf, index_buf):
+    """R4: days in the current month go to small daily files (YYYY-MM-DD.parquet) so the daily job never
+    rewrites a big file; older days go straight into the monthly / yearly files."""
+    cms = _current_month_start()
     for month, frames in price_buf.items():
-        append_parquet(PRICES / month[:4] / f"{month}.parquet", pd.concat(frames), ["date", "isin", "series"])
+        df = pd.concat(frames)
+        old, new = df[df["date"] < cms], df[df["date"] >= cms]
+        if len(old):
+            append_parquet(PRICES / month[:4] / f"{month}.parquet", old, ["date", "isin", "series"])
+        for d, g in new.groupby("date"):
+            append_parquet(PRICES / f"{d:%Y}" / f"{d:%Y-%m-%d}.parquet", g, ["date", "isin", "series"])
     for year, frames in index_buf.items():
-        append_parquet(INDICES / f"{year}.parquet", pd.concat(frames), ["date", "index"])
+        df = pd.concat(frames)
+        old, new = df[df["date"] < cms], df[df["date"] >= cms]
+        if len(old):
+            append_parquet(INDICES / f"{year}.parquet", old, ["date", "index"])
+        for d, g in new.groupby("date"):
+            append_parquet(INDICES / f"{d:%Y-%m-%d}.parquet", g, ["date", "index"])
     price_buf.clear()
     index_buf.clear()
+
+
+def compact():
+    """Once a month: fold last month's daily files into the monthly price file / yearly index file."""
+    cms = f"{_current_month_start():%Y-%m}"
+    moved = 0
+    for f in sorted(PRICES.glob("*/????-??-??.parquet")):
+        if f.stem[:7] < cms:
+            append_parquet(PRICES / f.stem[:4] / f"{f.stem[:7]}.parquet", pd.read_parquet(f), ["date", "isin", "series"])
+            f.unlink()
+            moved += 1
+    for f in sorted(INDICES.glob("????-??-??.parquet")):
+        if f.stem[:7] < cms:
+            append_parquet(INDICES / f"{f.stem[:4]}.parquet", pd.read_parquet(f), ["date", "index"])
+            f.unlink()
+            moved += 1
+    if moved:
+        print(f"compacted {moved} daily files into monthly/yearly files")
+    return moved
 
 
 def read_log():
@@ -180,6 +216,7 @@ def write_log(log_df):
 # ------------------------------------------------------------------ backfill
 def backfill(start, end, max_minutes):
     t0 = time.time()
+    compact()
     log_df = read_log()
     done = set(log_df.loc[log_df["status"].isin(["ok", "holiday", "no_session"]), "date"])
     days = [start + timedelta(n) for n in range((end - start).days + 1)]
@@ -253,7 +290,13 @@ def backfill(start, end, max_minutes):
     write_log(log_df)
     if stopped:
         print("STOPPED:", stopped)
+    global NEW_DAYS
+    NEW_DAYS = int(log_df[log_df["loaded_at"] >= datetime.fromtimestamp(t0).isoformat(timespec="seconds")]
+                   ["status"].astype(str).str.startswith("ok").sum())
     return stopped
+
+
+NEW_DAYS = 0
 
 
 # ------------------------------------------------------------------ corporate actions (F3)
@@ -535,6 +578,9 @@ def main():
     stopped = None
     if not a.actions_only:
         stopped = backfill(date.fromisoformat(a.start), date.fromisoformat(a.end), a.max_minutes)
+        if NEW_DAYS == 0 and ACTIONS.exists():
+            print("no new trading days - split/bonus check skipped")
+            return
     actions = detect_actions()
     report(stopped, actions)
 

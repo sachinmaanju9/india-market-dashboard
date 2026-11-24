@@ -8,6 +8,7 @@ import sys
 from pathlib import Path as _P
 sys.path.insert(0, str(_P(__file__).resolve().parents[1]))
 from app_lib import sector as S  # noqa: E402
+from app_lib import store  # noqa: E402
 
 
 # ------------------------------------------------------------------ palette (dataviz reference instance)
@@ -41,6 +42,7 @@ last = wide.index.max()
 
 # ------------------------------------------------------------------ controls
 st.title("Sector performance")
+store.banner(st)
 st.caption(f"NSE price-return indices · data up to **{last:%d %b %Y}**")
 
 periods = S.presets(last)

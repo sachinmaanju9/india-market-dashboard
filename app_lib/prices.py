@@ -37,8 +37,13 @@ def load_adjusted(isins=None, start=None):
     files = sorted((DATA / "prices" / "raw").glob("*/*.parquet"))
     if start is not None:
         files = [f for f in files if f.stem >= pd.Timestamp(start).strftime("%Y-%m")]
-    px = pd.concat([pd.read_parquet(f, columns=COLS) for f in files], ignore_index=True)
     link = _links()
+    filt = None
+    if isins is not None:
+        want = set(isins)
+        want |= {old for old, new in link.items() if new in want}      # pre-split ISINs too
+        filt = [("isin", "in", sorted(want))]
+    px = pd.concat([pd.read_parquet(f, columns=COLS, filters=filt) for f in files], ignore_index=True)
     px["isin"] = px["isin"].map(lambda i: link.get(i, i))
     if isins is not None:
         px = px[px["isin"].isin(set(isins))]

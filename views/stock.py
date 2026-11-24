@@ -13,6 +13,8 @@ from plotly.subplots import make_subplots  # noqa: E402
 
 from app_lib import screens as SC  # noqa: E402
 from app_lib import sector as SEC  # noqa: E402
+from app_lib import store  # noqa: E402
+from app_lib.prices import load_adjusted  # noqa: E402
 
 SERIES = ["#2a78d6", "#eb6834", "#1baf7a", "#eda100", "#e87ba4", "#008300"]
 BENCH_STYLE = {"Nifty 50": ("#0b0b0b", "dash"), "Nifty Smallcap 250": ("#52514e", "dot"),
@@ -35,9 +37,9 @@ def layout(fig, height=380, y_title=None):
 # ------------------------------------------------------------------ data (cached)
 @st.cache_data(ttl=3600, show_spinner=False)
 def base():
-    m = pd.read_parquet("data/screens/metrics_latest.parquet")
+    m = pd.read_parquet(store.path("data/screens/metrics_latest.parquet"))
     master = pd.read_csv("data/universe/master.csv")
-    bench = pd.read_csv("data/screens/bench_returns.csv")
+    bench = pd.read_csv(store.path("data/screens/bench_returns.csv"))
     return m, master, bench
 
 
@@ -54,15 +56,15 @@ def screens_passed():
 
 @st.cache_data(ttl=3600, show_spinner=False)
 def prices(isin):
-    return pq.read_table("data/prices/adjusted_universe.parquet", filters=[("isin", "=", isin)]).to_pandas() \
-        .sort_values("date").reset_index(drop=True)
+    return load_adjusted([isin]).sort_values("date").reset_index(drop=True)
 
 
 @st.cache_data(ttl=3600, show_spinner=False)
 def statements(symbol):
-    f = "data/fundamentals/statements_inr.parquet"
-    if not _P(f).exists():
-        f = "data/fundamentals/yf_statements.parquet"
+    try:
+        f = store.path("data/fundamentals/statements_inr.parquet")
+    except Exception:
+        return pd.DataFrame(columns=["symbol", "statement", "freq", "item", "period_end", "value"])
     return pq.read_table(f, filters=[("symbol", "=", symbol)]).to_pandas()
 
 
@@ -93,6 +95,7 @@ labels = (m["symbol"] + " — " + m["company"].fillna("")).tolist()
 qp = st.query_params.get("symbol")
 default = next((i for i, s in enumerate(m["symbol"]) if s == qp), next(
     (i for i, s in enumerate(m["symbol"]) if s == "RELIANCE"), 0))
+store.banner(st)
 pick = st.selectbox("Search a stock", labels, index=default)
 sym = pick.split(" — ")[0]
 st.query_params["symbol"] = sym
@@ -332,14 +335,20 @@ with tabs[5]:
         pct = (s < v).mean() * 100 if pd.notna(v) and len(s) >= 5 else np.nan
         rows.append({"Measure": lab, "Value": v, "Sector median": s.median() if len(s) else np.nan,
                      "Cheaper than … % of sector": (pct if higher_is_cheap else 100 - pct) if pd.notna(pct) else np.nan})
-    rows.append({"Measure": "Dividend yield %", "Value": np.nan, "Sector median": np.nan,
-                 "Cheaper than … % of sector": np.nan})
+    if "div_yield" in m:
+        dv = peers_ind["div_yield"].dropna()
+        v = r.get("div_yield")
+        rows.append({"Measure": "Dividend yield %", "Value": v, "Sector median": dv.median() if len(dv) else np.nan,
+                     "Cheaper than … % of sector": (dv < v).mean() * 100 if pd.notna(v) and len(dv) >= 5 else np.nan})
+    if "payout_pct" in m:
+        rows.append({"Measure": "Dividend payout % of profit", "Value": r.get("payout_pct"),
+                     "Sector median": peers_ind["payout_pct"].median(), "Cheaper than … % of sector": np.nan})
     st.dataframe(pd.DataFrame(rows), hide_index=True, width="stretch",
                  column_config={"Value": st.column_config.NumberColumn(format="%.1f"),
                                 "Sector median": st.column_config.NumberColumn(format="%.1f"),
                                 "Cheaper than … % of sector": st.column_config.NumberColumn(format="%.0f")})
-    st.caption(f"Sector = NSE industry **{r['nse_industry']}** ({len(peers_ind)} stocks). Dividend data arrives with "
-               "the weekly fundamentals refresh (Step 12).")
+    st.caption(f"Sector = NSE industry **{r['nse_industry']}** ({len(peers_ind)} stocks). "
+               "Dividend yield = last 12 months' dividends ÷ price (yfinance, refreshed weekly).")
     # P/E history band (DD3): price / EPS of the latest fiscal year already reported (60-day lag)
     eps = fs[(fs["freq"] == "annual") & fs["item"].isin(["Diluted EPS", "Basic EPS"])]
     eps = eps.sort_values("item").drop_duplicates("period_end").set_index("period_end")["value"].sort_index()

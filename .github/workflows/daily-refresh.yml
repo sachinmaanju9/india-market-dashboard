@@ -1,0 +1,67 @@
+name: daily-refresh
+
+# R1 schedule (cron is UTC; IST = UTC + 5:30)
+on:
+  schedule:
+    - cron: "7 14 * * 1-5"    # Mon-Fri 19:37 IST  - main daily run
+    - cron: "7 17 * * 1-5"    # Mon-Fri 22:37 IST  - catch-up if files were late
+    - cron: "37 6 * * 6"      # Sat 12:07 IST      - weekend special-session check
+    - cron: "23 8 * * 0"      # Sun 13:53 IST      - weekly refresh (R3)
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "daily or weekly"
+        required: true
+        type: choice
+        options: [daily, weekly]
+        default: daily
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - uses: actions/checkout@v4
+      - name: Restore regenerated files from the 'derived' branch
+        run: |
+          git fetch --depth 1 origin derived && git --work-tree=. checkout origin/derived -- data || echo "no derived branch yet"
+          git reset -q   # keep them untracked on main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - name: Refresh
+        env:
+          MODE: ${{ inputs.mode || (github.event.schedule == '23 8 * * 0' && 'weekly' || 'daily') }}
+        run: python scripts/refresh.py "$MODE"
+      - name: Save source data to main
+        if: always()
+        run: |
+          git config user.name "refresh-bot"
+          git config user.email "refresh-bot@users.noreply.github.com"
+          git add data
+          git diff --cached --quiet || git commit -q -m "daily-refresh $(date -u +%F)"
+          git pull -q --rebase
+          git push -q
+      - name: Save regenerated files to 'derived' (latest copy only)
+        if: always()
+        env:
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdir -p /tmp/derived && cd /tmp/derived
+          for f in data/screens/metrics_latest.parquet data/screens/bench_returns.csv \
+                   data/fundamentals/statements_inr.parquet data/fundamentals/yf_statements.parquet \
+                   data/fundamentals/yf_info.parquet data/fundamentals/nse_shareholding.parquet; do
+            [ -f "$GITHUB_WORKSPACE/$f" ] && mkdir -p "$(dirname "$f")" && cp "$GITHUB_WORKSPACE/$f" "$f"
+          done
+          git init -q && git checkout -q -b derived
+          git -c user.name=refresh-bot -c user.email=refresh-bot@users.noreply.github.com add -A
+          git -c user.name=refresh-bot -c user.email=refresh-bot@users.noreply.github.com commit -q -m "derived $(date -u +%FT%TZ)"
+          git push -q -f "https://x-access-token:${TOKEN}@github.com/${GITHUB_REPOSITORY}.git" derived

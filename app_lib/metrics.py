@@ -281,6 +281,12 @@ def fundamentals(st, info, master, last_close, usdinr=None):
     f = pd.DataFrame(rows)
     f["is_financial"] = f["symbol"].isin(fin)
     f["usd_converted"] = f["symbol"].isin(usd)
+    # DD5 dividends (yfinance): trailing yield as a fraction -> %, payout ratio fraction -> %
+    inf = info.set_index("symbol")
+    if "trailingAnnualDividendYield" in inf:
+        f["div_yield"] = pd.to_numeric(f["symbol"].map(inf["trailingAnnualDividendYield"]), errors="coerce") * 100
+    if "payoutRatio" in inf:
+        f["payout_pct"] = f["symbol"].map(inf["payoutRatio"]) * 100
     f.attrs["statements"] = st          # statements after USD conversion (for the deep-dive)
     return f
 

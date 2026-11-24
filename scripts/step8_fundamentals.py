@@ -62,7 +62,8 @@ NEEDED = {
 }
 INFO_KEYS = ["marketCap", "enterpriseValue", "trailingPE", "priceToBook", "sharesOutstanding",
              "returnOnEquity", "returnOnAssets", "debtToEquity", "sector", "industry", "currency",
-             "financialCurrency", "mostRecentQuarter", "lastFiscalYearEnd"]
+             "financialCurrency", "mostRecentQuarter", "lastFiscalYearEnd",
+             "dividendYield", "trailingAnnualDividendYield", "dividendRate", "payoutRatio"]   # DD5 dividends
 LOG = []
 
 
@@ -92,7 +93,7 @@ def fetch_yf(symbols):
     old_info = pd.read_parquet(YF_INFO) if YF_INFO.exists() else pd.DataFrame()
     fresh = set()
     if not old_info.empty:
-        recent = old_info[pd.to_datetime(old_info["fetched"]) >= pd.Timestamp(date.today() - timedelta(days=7))]
+        recent = old_info[pd.to_datetime(old_info["fetched"]) >= pd.Timestamp(date.today() - timedelta(days=5))]
         fresh = set(recent["symbol"])
     todo = [s for s in symbols if s not in fresh]
     log(f"A. yfinance: {len(fresh)} fetched in last 7 days, {len(todo)} to fetch")
@@ -289,6 +290,7 @@ def main():
     ap.add_argument("--limit", type=int, default=0)
     ap.add_argument("--skip-yf", action="store_true")
     ap.add_argument("--skip-nse", action="store_true")
+    ap.add_argument("--skip-xbrl-sample", action="store_true")
     a = ap.parse_args()
     m = pd.read_csv(MASTER)
     m = m[(m["status"] == "active") & (m.get("instrument", "Equity") != "REIT/InvIT")]
@@ -299,7 +301,7 @@ def main():
     xs = pd.DataFrame()
     if not a.skip_nse:
         sh = fetch_shareholding(syms)
-        xs = xbrl_sample(sh)
+        xs = pd.DataFrame() if a.skip_xbrl_sample else xbrl_sample(sh)
     summary, sheets = coverage(m)
     with pd.ExcelWriter(REPORT) as xw:
         pd.DataFrame(summary, columns=["item", "value"]).to_excel(xw, sheet_name="Summary", index=False)

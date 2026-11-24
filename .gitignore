@@ -3,3 +3,11 @@ __pycache__/
 .DS_Store
 *.xlsx
 step3_diag.txt
+
+# regenerated files live on the 'derived' branch (Step 12, R4)
+data/screens/
+data/fundamentals/statements_inr.parquet
+data/fundamentals/yf_statements.parquet
+data/fundamentals/yf_info.parquet
+data/fundamentals/nse_shareholding.parquet
+data/prices/adjusted_universe.parquet

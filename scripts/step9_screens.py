@@ -53,10 +53,7 @@ def main():
     master = master[master["status"] == "active"]
     print(f"{len(master)} active stocks")
 
-    full = load_adjusted(master["isin"])
-    full[["date", "isin", "symbol", "open", "high", "low", "close", "raw_close", "volume", "value", "deliv_pct"]] \
-        .to_parquet("data/prices/adjusted_universe.parquet", index=False)        # for the stock deep-dive
-    px = full[full["date"] >= pd.Timestamp.today() - pd.Timedelta(days=800)]
+    px = load_adjusted(master["isin"], start=pd.Timestamp.today() - pd.Timedelta(days=800))
     tech = M.technical(px).reset_index()
     print(f"technical: {len(tech)} stocks ({time.time() - t0:.0f}s)")
 
