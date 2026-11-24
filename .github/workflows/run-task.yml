@@ -8,6 +8,7 @@ on:
         required: true
         type: choice
         options:
+          - screens
           - ownership-backfill
       extra_args:
         description: "Optional extra arguments (leave blank)"
@@ -34,6 +35,7 @@ jobs:
         run: |
           case "$TASK" in
             ownership-backfill) python scripts/step9_ownership.py $EXTRA ;;
+            screens) python scripts/step9_screens.py $EXTRA ;;
             *) echo "unknown task $TASK"; exit 1 ;;
           esac
       - name: Save data to the repo
