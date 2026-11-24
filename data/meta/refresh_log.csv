@@ -1,2 +1,3 @@
 run_at,mode,new_days,last_price_date,seconds,failed,warnings,steps
 2026-11-24T08:42:48,daily,1,2026-11-23,144,,,step4_backfill.py --start 2026-11-03 --max-minutes 60=0(109s) | step9_screens.py=0(35s)
+2026-11-24T08:47:39,weekly,0,2026-11-23,1681,,,step3_universe.py=0(436s) | step8_fundamentals.py --skip-xbrl-sample=0(1191s) | step9_ownership.py=0(11s) | step4_backfill.py --start 2026-11-03 --max-minutes 60=0(0s) | step9_screens.py=0(43s)

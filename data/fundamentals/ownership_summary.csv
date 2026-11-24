@@ -1,0 +1,14 @@
+item,value
+status,complete
+filings parsed OK,4447
+filings failed,1338
+"  of which older XBRL format (Dec-2024, Mar-2025)",1332
+stocks with >= 5 quarters,705
+stocks with >= 6 quarters,680
+latest quarter,2026-09-30
+filings where promoter + public is not ~100%,104
+FII present,4447
+DII present,4441
+MF present,4407
+pledge known (incl. 'no pledge'),4447
+stocks with promoter pledge > 0 (latest),153
