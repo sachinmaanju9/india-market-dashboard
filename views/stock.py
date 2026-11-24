@@ -13,6 +13,7 @@ from plotly.subplots import make_subplots  # noqa: E402
 
 from app_lib import screens as SC  # noqa: E402
 from app_lib import sector as SEC  # noqa: E402
+from app_lib import intraday as I  # noqa: E402
 from app_lib import store  # noqa: E402
 from app_lib.prices import load_adjusted  # noqa: E402
 
@@ -119,8 +120,16 @@ st.markdown("<div style='display:flex;flex-wrap:wrap;gap:10px 24px;margin:2px 0 
     f"<div style='font-size:1.45rem;color:{INK}'>{v}</div><div style='font-size:0.8rem'>{d}</div></div>"
     for k, v, d in tiles) + "</div>", unsafe_allow_html=True)
 
-tabs = st.tabs(["Summary", "Price", "Relative", "Technicals", "Financials", "Valuation", "Ownership",
+tabs = st.tabs(["Summary", "Today", "Price", "Relative", "Technicals", "Financials", "Valuation", "Ownership",
                 "Peers", "Scores", "Events & notes"])
+TODAY_TAB = tabs[1]
+tabs = [tabs[0]] + list(tabs[2:])
+
+
+@st.cache_data(ttl=180, show_spinner=False)
+def live(symbol):
+    got = I.fetch([f"{symbol}.NS"], interval="5m", period="2d")
+    return got.get(f"{symbol}.NS"), I.now_ist()
 
 # ------------------------------------------------------------------ 1 Summary
 with tabs[0]:
@@ -157,6 +166,33 @@ with tabs[0]:
                 st.markdown(f"- ⚠️ **{f}**")
     else:
         st.caption("✓ No red flags.")
+
+# ------------------------------------------------------------------ Today (Step 13)
+with TODAY_TAB:
+    if st.button("Load today's 5-minute chart", key="live_btn") or st.session_state.get(f"live_{sym}"):
+        st.session_state[f"live_{sym}"] = True
+        b, fetched = live(sym)
+        if b is None or b.empty:
+            st.info("No intraday data from Yahoo Finance for this stock right now.")
+        else:
+            td, pv = I.split_days(b)
+            s_ = I.summarise(td, pv)
+            d = I.delay_minutes(s_["last_bar"])
+            c1, c2, c3 = st.columns(3)
+            c1.metric("Last", f"₹{s_['last']:,.1f}")
+            c2.metric("Today", f"{s_['day_pct']:+.2f}%")
+            c3.metric("Last hour", f"{s_['hour_pct']:+.2f}%")
+            fig = go.Figure()
+            fig.add_scatter(x=td.index, y=td["Close"], name="Price", line=dict(color=SERIES[0], width=2))
+            if pd.notna(pv):
+                fig.add_hline(y=pv, line=dict(color=MUTED, dash="dash", width=1),
+                              annotation_text=f"prev close {pv:,.1f}", annotation_font_color=MUTED)
+            st.plotly_chart(layout(fig, height=320, y_title="₹"), width="stretch")
+            st.caption(f"Market {I.market_status()} · latest bar {s_['last_bar']:%a %d %b %H:%M} IST"
+                       + (f" · about {d:.0f} min behind live" if d is not None else "")
+                       + f" · fetched {fetched:%H:%M} · Yahoo Finance (free, delayed)")
+    else:
+        st.caption("Fetches live 5-minute prices from Yahoo Finance (a few seconds).")
 
 # ------------------------------------------------------------------ 2 Price
 with tabs[1]:
