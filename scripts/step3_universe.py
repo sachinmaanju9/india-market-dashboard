@@ -450,10 +450,13 @@ def main():
             prev_adds = set(pm[(pm["status"] == "active") & pm["tag"].isin(["IPO", "NEWLIST"])]["isin"])
         if threshold:
             already = cands["isin"].str.strip().isin(prev_adds)
+            # an already-added stock with NO market cap this week (yfinance gap) is kept, not dropped
             cands["passes"] = cands["market_cap_cr"].ge(threshold) | \
-                (already & cands["market_cap_cr"].ge(BUFFER * threshold))
+                (already & cands["market_cap_cr"].ge(BUFFER * threshold)) | \
+                (already & cands["market_cap_cr"].isna())
             cands["rule"] = (cands["market_cap_cr"].ge(threshold)).map({True: "above threshold", False: ""})
             cands.loc[already & cands["passes"] & (cands["rule"] == ""), "rule"] = "kept by 80% buffer"
+            cands.loc[already & cands["market_cap_cr"].isna(), "rule"] = "kept: market cap unavailable this week"
         else:
             cands["passes"], cands["rule"] = False, "no threshold"
         REPORT["IPO_candidates"] = cands[["symbol", "company", "isin", "LISTING_DATE", "market_cap_cr", "passes", "rule"]] \
@@ -474,6 +477,7 @@ def main():
         for k in ("Nifty 500", "Nifty Microcap 250"):
             isin_map.update(dict(zip(core[k]["Symbol"].str.strip(), core[k]["ISIN Code"].str.strip())))
         isin_map.update(dict(zip(ipo_adds["symbol"].astype(str).str.strip(), ipo_adds["isin"].astype(str).str.strip())))
+        syms = [x for x in syms if not str(x).upper().startswith("DUMMY")]
         cls, cls_err = classification(list(dict.fromkeys(syms)), isin_map)
         if len(cls_err):
             REPORT["Class_errors"] = cls_err

@@ -92,11 +92,11 @@ def fetch_yf(symbols):
     old_st = pd.read_parquet(YF_ST) if YF_ST.exists() else pd.DataFrame()
     old_info = pd.read_parquet(YF_INFO) if YF_INFO.exists() else pd.DataFrame()
     fresh = set()
-    if not old_info.empty:
+    if not old_info.empty and all(k in old_info for k in INFO_KEYS):   # new fields (e.g. dividends) -> refetch all
         recent = old_info[pd.to_datetime(old_info["fetched"]) >= pd.Timestamp(date.today() - timedelta(days=5))]
         fresh = set(recent["symbol"])
     todo = [s for s in symbols if s not in fresh]
-    log(f"A. yfinance: {len(fresh)} fetched in last 7 days, {len(todo)} to fetch")
+    log(f"A. yfinance: {len(fresh)} fetched in last 5 days, {len(todo)} to fetch")
     st_rows, info_rows, fails = [], [], 0
     for i, sym in enumerate(todo, 1):
         try:
