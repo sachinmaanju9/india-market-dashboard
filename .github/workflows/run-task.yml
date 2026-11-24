@@ -1,0 +1,52 @@
+name: run-task
+
+on:
+  workflow_dispatch:
+    inputs:
+      task:
+        description: "Which task to run"
+        required: true
+        type: choice
+        options:
+          - ownership-backfill
+      extra_args:
+        description: "Optional extra arguments (leave blank)"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 330
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - name: Run task
+        env:
+          TASK: ${{ inputs.task }}
+          EXTRA: ${{ inputs.extra_args }}
+        run: |
+          case "$TASK" in
+            ownership-backfill) python scripts/step9_ownership.py $EXTRA ;;
+            *) echo "unknown task $TASK"; exit 1 ;;
+          esac
+      - name: Save data to the repo
+        if: always()
+        run: |
+          git config user.name "backfill-bot"
+          git config user.email "backfill-bot@users.noreply.github.com"
+          git add data
+          git diff --cached --quiet || git commit -m "run-task ${{ inputs.task }} $(date -u +%F)"
+          git pull --rebase
+          git push
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: task-report
+          path: "*_report.xlsx"
