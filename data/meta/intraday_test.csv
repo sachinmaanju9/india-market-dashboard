@@ -1,0 +1,2 @@
+run_at,market,indices_found,indices_total,stocks_requested,stocks_with_bars,fetch_seconds,median_delay_5m_stocks_min,median_delay_1m_stocks_min,median_delay_5m_indices_min
+2026-11-25 11:06,open,18,28,835,832,34.6,0.0,0.0,0.0
