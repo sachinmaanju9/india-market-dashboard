@@ -53,6 +53,8 @@ def main():
     f = Path("data/meta/intraday_test.csv")
     pd.concat([pd.read_csv(f) if f.exists() else pd.DataFrame(), pd.DataFrame([summ])]).to_csv(f, index=False)
     print(pd.Series(summ).to_string())
+    imap = imap.astype({"last_bar": str}) if "last_bar" in imap else imap
+    last = last.astype(str)
     with pd.ExcelWriter("intraday_test_report.xlsx") as xw:
         pd.DataFrame([summ]).T.reset_index().to_excel(xw, sheet_name="Summary", index=False)
         imap.to_excel(xw, sheet_name="Index_map", index=False)

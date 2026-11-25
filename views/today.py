@@ -61,7 +61,7 @@ for name, b in bars.items():
 last_bar = max(v["last_bar"] for v in summ.values())
 delay = I.delay_minutes(last_bar)
 st.caption(f"Market **{status}** · latest 5-minute bar **{last_bar:%a %d %b, %H:%M}** IST"
-           + (f" · about **{delay:.0f} min behind** live" if delay is not None else "")
+           + I.delay_text(delay)
            + f" · fetched {fetched:%H:%M} · source: Yahoo Finance (free, delayed, unofficial)")
 
 # ------------------------------------------------------------------ benchmark strip

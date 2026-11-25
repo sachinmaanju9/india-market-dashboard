@@ -109,3 +109,12 @@ def delay_minutes(last_bar, interval_min=5, now=None):
     if market_status(now) != "open":
         return None
     return max((now - end).total_seconds() / 60, 0)
+
+
+def delay_text(d):
+    """Plain label for delay_minutes(); the latest 5-min bar is still forming when d is ~0."""
+    if d is None:
+        return ""
+    if d < 2:
+        return " · **near real time** (latest bar still forming)"
+    return f" · about **{d:.0f} min behind** live"

@@ -189,7 +189,7 @@ with TODAY_TAB:
                               annotation_text=f"prev close {pv:,.1f}", annotation_font_color=MUTED)
             st.plotly_chart(layout(fig, height=320, y_title="₹"), width="stretch")
             st.caption(f"Market {I.market_status()} · latest bar {s_['last_bar']:%a %d %b %H:%M} IST"
-                       + (f" · about {d:.0f} min behind live" if d is not None else "")
+                       + I.delay_text(d)
                        + f" · fetched {fetched:%H:%M} · Yahoo Finance (free, delayed)")
     else:
         st.caption("Fetches live 5-minute prices from Yahoo Finance (a few seconds).")
