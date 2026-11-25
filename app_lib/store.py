@@ -59,7 +59,7 @@ def freshness():
         return None, False
     lg = pd.read_csv(log, dtype={"date": str})
     ok = lg[lg["status"].astype(str).str.startswith("ok")]
-    checked = lg[lg["status"].isin(["ok", "ok_no_delivery", "holiday", "no_session"])]
+    checked = lg[lg["status"].astype(str).str.startswith("ok") | lg["status"].isin(["holiday", "no_session"])]
     last_price = pd.to_datetime(ok["date"]).max().date() if len(ok) else None
     last_checked = pd.to_datetime(checked["date"]).max().date() if len(checked) else None
     expected = expected_trading_date()

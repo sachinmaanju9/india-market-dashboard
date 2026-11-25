@@ -276,6 +276,12 @@ def backfill(start, end, max_minutes):
             index_buf.setdefault(str(d.year), []).append(got["idx"])
             row["stocks"], row["indices"] = len(px), len(got["idx"])
             row["status"] = "ok" if isinstance(got.get("dl"), pd.DataFrame) else "ok_no_delivery"
+            # NSE sometimes posts today's index file before all indices are in it (25-Nov-2026: 146 vs 169).
+            # Keep today's data but mark it for a retry by the later run while it looks short.
+            prev_ok = log_df.loc[log_df["status"].isin(["ok", "ok_no_delivery"]), "indices"]
+            if d >= ist_today() and len(prev_ok) and len(got["idx"]) < 0.95 * float(prev_ok.iloc[-1]):
+                row["status"] = "ok_index_short"
+                row["note"] += f"only {len(got['idx'])} indices (last day {int(prev_ok.iloc[-1])}) - will retry; "
         else:
             row["status"] = "partial"  # retried on next run
 
