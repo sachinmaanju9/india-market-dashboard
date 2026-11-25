@@ -578,7 +578,7 @@ def report(stopped, actions):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--start", default=DEFAULT_START.isoformat())
-    ap.add_argument("--end", default=(date.today() - timedelta(days=1)).isoformat())
+    ap.add_argument("--end", default=ist_today().isoformat())  # today in India: day is loaded once NSE publishes, else stays pending
     ap.add_argument("--max-minutes", type=float, default=320)
     ap.add_argument("--actions-only", action="store_true")
     a = ap.parse_args()
