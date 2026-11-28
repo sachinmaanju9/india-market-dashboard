@@ -12,3 +12,4 @@ run_at,mode,new_days,last_price_date,seconds,failed,warnings,steps
 2026-11-26T17:58:14,daily,0,2026-11-26,0,,,step4_backfill.py --start 2026-11-05 --max-minutes 60=0(0s)
 2026-11-27T14:59:19,daily,1,2026-11-27,122,,,step4_backfill.py --start 2026-11-06 --max-minutes 60=0(96s) | step9_screens.py=0(26s)
 2026-11-27T17:57:53,daily,0,2026-11-27,0,,,step4_backfill.py --start 2026-11-06 --max-minutes 60=0(0s)
+2026-11-28T07:48:41,daily,0,2026-11-27,2,,,step4_backfill.py --start 2026-11-07 --max-minutes 60=0(2s)
